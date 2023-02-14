@@ -1,0 +1,3899 @@
+/*
+
+												PUBG: BATTLEGROUNDS (FOR CONTROLLER PLAYERS)
+
+														Author:		swedemafia
+														Script:		Empathy
+														Version:	2.15
+														Build Date:	12 Feb 2023
+														Support:	https://discord.gg/gr93vNW7Jp
+														
+														
+							REQUIREMENTS:
+								* Controller Vibration *MUST* be enabled within your PUBG in-game settings
+								* If using a keyboard for Weapon Select, in Zen Studio, make sure to unmap ALL keyboard buttons from any controller buttons!
+							
+							README:
+								* https://docs.google.com/document/d/1UQZdi7fMyfoOJBMcWclE7bcUjXQazbRkIO0XBOm-BRI
+								
+							FEATURES:
+								* Anti-drift algorithm and calibration process to remove stick drift.
+								* Anti-recoil for all 30 (AR/SMG/DMR/LMG) weapons.
+								* Attachment Selector to choose which attachments you are using so recoil adjusts accordingly.
+								* Auto Focus automatically holds your breath while aiming.
+								* Auto Lean press in RS/R3 while aiming/firing to quickly lean back and forth.
+								* Auto Parachute allows you to lock your parachute angle and adjust it on-the-fly.
+								* Auto Turbo automatically engages turbo boost while driving a vehicle.
+								* Burst Fire (adjustable) to burst fire a semi-automatic weapon.
+								* Scope Selector to choose which scope you are using so recoil adjusts accordingly.
+								
+							MISCELLANEOUS:
+								* Adjustable Primary/Secondary LED color on your Cronus Zen device
+								* Compatible for Inverted players
+								* Deadzone capabilities to allow you to run a 0 in-game deadzone setting
+									* The lower the in-game deadzone, the less Anti-recoil compensation is needed
+								* FULL support for Type B / Type C players.  Type A will not be able to use all options such as Auto Focus
+								* Profile Resync to keep Anti-recoil synchronized with your in-game weapons
+								
+							NAVIGATION:
+								* Enter script menu:
+									* Hold LT and press Menu (Xbox)
+									* Hold L2 and press Options (PlayStation)
+								* Enter Weapon Select menu
+									* Hold LT and press View (Xbox)
+									* Hold L2 and press Share (PlayStation)
+								* Remove all attachments & reset scope selection
+									* Hold RB and press View (Xbox)
+									* Hold R1 and press Share (PlayStation)
+								* Resync Stance Tracker
+									* Toggling Standing/Crouched:
+										- Hold RB and press B (Xbox)
+										- Hold R1 and press Circle (PlayStation)
+									* Toggling Standing/Prone:
+										- Hold RB and press A (Xbox)
+										- Hold R1 and press Cross (PlayStation)
+									* Resync Inventory Tracker:
+										- Hold RB and press View (Xbox)
+										- Hold R1 and press Share (PlayStation)
+								* Selecting Scopes & Attachments:
+									* Scopes:
+										- Hold RB/R1 and press Up
+										- Keyboard users: press 1 (1x), 2 (2x), 3 (3x), 4 (4x), 6 (6x), 8 (8x)
+									* Muzzles:
+										- Hold RB/R1 and press Left
+									* Foregrips:
+										- Hold RB/R1 and press Down
+									* Stocks:
+										- Hold RB/R1 and press Right
+								* Select values or enabling/disabling options
+									* Press Up or Down
+								* Editing values
+									* Hold LT/L2 and press Right/Left (increase by 1/decrease by 1)
+									* Hold LT/L2 and press Up/Down (increase by 10/decrease by 10)
+								* Save Settings
+									* Press B/Circle until your Cronus Zen device says "Settings Saved"
+								
+							SWITCHING WEAPONS:
+								* By default, 'Profile Switch' is set to Y (Xbox) or Triangle (PlayStation)
+									* Pressing the 'Profile Switch' will change which Anti-recoil profile is used on the Zen
+									* The weapon the script is set to will flash every 3.5 seconds on the screen
+									
+								* To resync the Primary/Secondary weapons on the script with your Primary/Secondary weapons in game...
+									...by default, 'Profile Resync' is set to LT (Xbox) or L2 (PlayStation)
+									* Hold 'Profile Resync' button and press the 'Profile Switch' button
+										* By default, 'Profile Resync' is LT/L2 and 'Profile Switch' is Y/Triangle
+										
+								* To change weapons on the script, you *MUST* have a keyboard attached to the front-left (A3) USB port
+								
+									[Assault Rifles]
+									 Q - AKM
+									 W - Beryl 762
+									 E - G36C
+									 R - M416
+									 T - M16A4
+									 Y - SCAR-L
+									 U - Mk47 Mutant
+									 I - QBZ
+									 O - AUG
+									 P - Groza
+									 [ - ACE32
+									 ] - K2
+
+									[Sub Machine Guns]
+									 A - PP-19 Bizon
+									 S - Tommy Gun
+									 D - UMP45
+									 F - Micro UZI
+									 G - Vector
+									 H - MP5K
+									 J - P90
+									 K - MP9
+									
+									[Light Machine Guns]
+									 L - DP-28
+									 ; - M249
+									 ' - MG3 (660rpm) 
+									 ENTER - MG3 (990rpm) 
+									
+									[Designated Marksman Rifles]
+									 Z - SLR
+									 X - Mini 14
+									 C - SKS
+									 V - VSS (automatic fire only)
+									 B - QBU
+									 N - Mk14 (single-fire only)
+									 M - Mk12
+									
+									[Sniper Rifle]
+									 , - Sniper/Shotgun
+									
+							CHANGE LOG:
+								[Version 2.15]
+								* [BUGS]
+									- Fixed an issue where Burst Fire would not disable when swapping to an automatic weapon.
+									- Fixed an issue where Stance Tracker would not recognize pressing jump as changing your stance from crouch/prone.
+								* [NEW]
+									- Input your sensitivities to the script in the Anti-recoil menu to match your in-game settings.
+								* [UPGRADE]
+									- Further refined the recoil patterns for all weapons.
+									- Stance Tracker resync:
+										* Hold RB/R1 and press B/Circle will toggle between standing/crouched.
+										* Hold RB/R1 and press A/Cross will toggle between standing/prone.
+									- Stance Tracker will now detect if you are in your inventory.
+										- If it becomes out of sync, hold RB/R1 and press View/Share.
+									- Stance Tracker will now cause your controller to have a slight rumble every two (2) seconds.
+								* [REMOVED]
+									- Removed anti-recoil Correction Values.
+								[Version 2.14a]
+								* [BUGS]
+									- Fixed an issue causing Stance Tracker to engage when it is disabled while exiting Vehicle Mode.
+								[Version 2.14]
+								* [NEW]
+									- Scope Selector
+										- Hold RB/R1 and press Up/Down to set the scope on your weapon
+											- AR/SMG/LMG can use 1x/2x/3x
+											- DMR, M16A4, Mutant Mk47 can use 3x/4x/6x and 8x (where supported)
+									- Hair Triggers (Options) is now optional
+									- Stance Tracker (Options) is now optional
+										- Script now keeps track of your stance (standing, crouched or prone)
+											- LED will be solid with your profile color for standing
+											- LED will flash your profile color and teal for crouched
+											- LED will flash your profile color and orange for prone
+											- Reset your stance if it becomes out of sync holding RB/R1 and press Right
+									- VM Speed (Settings) is now available
+										- This setting is optional
+								* [UPGRADE]
+									- New Anti-recoil system
+										- Modified & created new anti-recoil patterns for all weapons
+										- Adjustment values for each scope
+									- Various OLED display improvements
+										- Fixed a bug where text would overlap if Vehicle Mode during Weapon Display
+										- Script now informs you if Auto Turbo is enabled while in Vehicle Mode
+										- Script now informs you if Auto Parachute is enabled
+								* [REMOVED]
+									- Removed Rapid Fire and replaced it with Burst Fire (DMR/M16A4/Mutant Mk47 only)
+								[Version 2.13]
+								* [BUGS]
+									- Fixed issue where horizontal recoil compensation was being applied when it shouldn't be
+								[Version 2.12]
+								* [BUGS}
+									- Fixed issue where saved settings were not reloading properly
+									- Fixed Auto Turbo (again)
+								[Version 2.11]
+								* [BUGS]
+									- Fixed an issue where Auto Turbo would not engage
+									- Fixed an issue where Profile Colors menu would not properly illuminate the selected color
+								* [UPGRADE]
+									- Anti-recoil Correction Value now uses high resolution values for more precise adjustments
+									- Auto Focus will now engage even if player is moving
+								* [NEW]
+									- Keyboard is now *OPTIONAL*
+									- Added the ability to change weapons using a controller
+										- Keyboard weapon switching still remains, however, is now optional
+									- Added new Bumper/Triggers Option
+										- Allows you to swap LT/RT & L2/R2 with LB/RB & L1/R1
+									- Added an option to disable the Weapon Display screen saver
+								[Version 2.10]
+								* [BUGS]
+									- Fixed issue where saving settings would cause LED to display unwanted messages
+								* [UPGRADE]
+									- Completely remodeled the Anti-recoil system to use built-in values
+									- Rapid Fire now relies on one universal Speed setting
+								* [NEW]
+									- Anti-Recoil
+										Correction Value
+									- Options
+										Rapid Fire Speed
+									- Toggles
+										Auto Parachute
+										Auto Turbo
+								
+								[Version 2.00]
+								- Initial public release
+*/
+
+
+// Set to TRUE to use the developer's settings
+define DEVELOPER = FALSE;
+
+/**************************************************************/
+//	Variables
+/**************************************************************/
+//
+// (Anti-drift) variables
+int antiDriftStickValue;
+int antiDriftLowValue, antiDriftHighValue;
+int antiDriftCalibrationLow, antiDriftCalibrationHigh;
+int antiDriftCalibrationValue, antiDriftCalibrationRangeValue;
+int antiDriftCalibrationState, antiDriftCalibrationInRange, antiDriftCalibrationCanSet;
+int antiDriftCalibrationPolarStick, antiDriftCalibrationStick, antiDriftCalibrationDirection;
+// (Anti-recoil) variables
+int antiRecoilY;
+int antiRecoilMaxY;
+int antiRecoilIndexY;
+int antiRecoilAdjustment;
+int antiRecoilKickDurationY;
+int antiRecoilCrouch, antiRecoilProne;
+// (Anti-recoil) Attachments
+int antiRecoilAdjustValue;
+int antiRecoilForegripAdjust, antiRecoilMuzzleAdjust, antiRecoilScopeAdjust, antiRecoilStockAdjust;
+int antiRecoilMuzzle[2], antiRecoilForegrip[2], antiRecoilScope[2], antiRecoilStock[2];
+// (Anti-recoil) Stance Tracker
+int stanceInventory, stancePosition;
+
+// (Controller) Buttons
+int button[12];
+// (Controller) Sticks
+int aimX, aimY;
+int moveY, moveX;
+// (Controller) Current ADS & Fire button values
+int holdingADS, holdingFire;
+// Display
+int displayDepth, displayUpdate;
+// Display buffer
+int displayBuffer, displayBufferInsertCopyValue, displayBufferInsertNumberOfDigits;
+int displayBufferInsertDigits[5];
+// Loop iterators
+int i, j;
+// Memory and storage variables
+int spvar_current_bit, spvar_current_slot, spvar_current_value, spvar_tmp, spvar_bits;
+// (Menu) Edit menu variables
+int editMenuIndex;
+int editMenuSelectedRow;
+// (Menu) Mod menu variables
+int modMenuIndex, modMenuMin, modMenuMax;
+// (Options) Fast Lean
+int isLeaning;
+// (Options) Stance Tracker
+int stanceCounter;
+// (Profiles)
+int currentProfile, menuProfile;
+// Current profile weapon
+int currentCategory[2], currentWeapon[2];
+// (Screen saver)
+int screenSaverEnabled, screenSaverCounter, screenSaverWeaponCounter;
+// Script paused
+int scriptPaused;
+// (Toggles) Auto Parachute
+int autoParachute, autoParachuteStrength[2];
+// (Toggles) Auto Turbo
+int autoTurbo;
+// (Toggles) Burst Fire
+int burstFire[2];
+
+
+/**************************************************************/
+//	User-defined configuration variables
+/**************************************************************/
+// Anti-drift
+int varAntidrift;
+int varAntidriftLeft[4], varAntidriftRight[4];
+// Anti-recoil
+int varAntiRecoilSensitivity[6];
+int varAntiRecoilVerticalMultiplier;
+
+// Controller
+int varControllerButtonLayout;
+int varControllerBumperTriggers;
+// Options
+int varAutoFocus;
+int varAutoLean;
+int varFastLean;
+int varHairTriggers;
+int varStanceTracker, varStanceAlert;
+// Profiles
+int varProfileColor[2];
+// Settings
+int varBlockRumble;
+int varDeadzone[2];
+int varInverted;
+int varWeaponDisplay;
+int varVMSpeed;
+// Toggles
+int varToggleButton[8];
+
+
+/**************************************************************/
+//	Enumerations
+/**************************************************************/
+// (Anti-drift) Calibration direction
+enum { antiDriftUp, antiDriftDown, antiDriftLeft, antiDriftRight }
+// (Anti-drift) Calibratoin stick
+enum { antiDriftLeftStick, antiDriftRightStick }
+// (Anti-recoil) Muzzles
+enum {
+	Muzzle_None,
+	Muzzle_FlashHider, // 5% Reduction in Vertical Recoil (AR, SMG, Sniper)
+	Muzzle_Compensator, // 10% (AR), 25% (SMG), 20% (Sniper) Reduction in Vertical Recoil
+	Muzzle_Suppressor
+}
+// (Anti-recoil) Foregrips
+enum {
+	Foregrip_None,
+	Foregrip_Angled,		// - 0% Veritcal Recoil
+	Foregrip_Half,			// - 8% Vertical Recoil
+	Foregrip_Lightweight,	// - 0% Veritcal Recoil
+	Foregrip_Thumb,			// - 5% Vertical Recoil
+	Foregrip_Vertical		// - 15% Vertical Recoil
+}
+// (Anti-recoil) Stocks
+enum {
+	Stock_None,				// - 0% Vertical Recoil
+	Stock_CheekPad,			// - 20% Vertical Recoil [10% SKS]
+	Stock_Tactical,			// - 0% Vertical Recoil
+	Stock_Heavy,			// - 5% Vertical Recoil
+	Stock_Folding			// - 20% Vertical Recoil
+}
+// (Controller) Button layout IDs
+enum { cblTypeA, cblTypeB, cblTypeC }
+// (Controller) Button IDs
+enum { aim, ads, melee, fire, weapon, interact, action, jump, leanL, leanR, focus, zoom }
+// (Display) Color IDs
+enum { red, gold, yellow, green, blue, purple, pink, white, teal, orange }
+// (Display) Formatting
+enum { displayString, displayNumber }
+// (Display) Home screen message IDs
+enum { homeScriptName, homeScriptVersion, homeScriptAuthor }
+// (Display) HSB map lookup IDs
+enum { hue, saturation, brightness }
+// (Display) Text alignment and formatting IDs
+enum {
+	alignCenter = -2, alignRight, alignLeft = 5,
+	alignBottom = -1, alignTop = 5
+}
+// (Menu) Cycle value IDs
+enum { cycleValueUp, cycleValueDown }
+// (Menu) Edit menu navigation
+enum {
+	editMenuMin, editMenuMax,
+	editMenuLeft, editMenuRight,
+	editMenuUp, editMenuDown,
+	editMenuEnter, editMenuExit, editMenuNextPage, editMenuPreviousPage, editMenuAction
+}
+// (Menu) Mod menu IDs
+enum {
+	modMenuAntidrift, modMenuAntiRecoil, modMenuController,
+	modMenuOptions, modMenuProfiles, modMenuSettings, modMenuToggles
+}
+// (Menu) Mod menu navigation and actions
+enum {
+	modMenuPrevious, modMenuCurrent, modMenuNext,
+	modMenuDown, modMenuUp,
+	modMenuExit, modMenuEnter
+}
+// (Settings) Deadzone IDs
+enum { deadzoneLeft, deadzoneRight }
+// (Settings) VM speed IDs
+enum { vmSpeed4, vmSpeed6, vmSpeed8, vmSpeed10 }
+// (Toggles) Array IDs
+enum {
+	toggleProfile = 0,
+	toggleAutoParachute = 2,
+	toggleAutoTurbo = 4,
+	toggleBurstFire = 6
+}
+
+// Weapon Select menu category IDs
+enum { AR, SMG, LMG, DMR, SNIPER_SHOTGUN }
+/**************************************************************/
+//	Constants (strings)
+/**************************************************************/
+// (Anti-drift) Calibration direction
+const string antiDriftCalibrationDirectionPrompt[] = { "Direction: Up", "Direction: Down", "Direction: Left", "Direction: Right" }
+// (Anti-drift) Calibration result
+const string antiDriftCalibrationResult[] = { "Failed", "Success", "Cancelled", "Reset Value" }
+// (Anti-drift) Calibration state
+const string antiDriftCalibrationStateMsg[] = { "Press A/Cross", "Waiting" }
+// (Anti-drift) Calibration stick
+const string antiDriftCalibrationStickPrompt[] = { "Joystick: Left", "Joystick: Right" }
+// (Anti-drift) Values display
+const string antiDriftValues[] = { "U: ", "D: ", "L: ", "R: " }
+// (Anti-recoil) Scope Names
+const string scopeName[] = { "1x", "2x", "3x", "4x", "6x", "8x" }
+// (Anti-recoil) Muzzles
+const string muzzles[] = { "No Muzzle", "Flash Hider", "Compensator", "Suppressor" }
+// (Anti-recoil) Foregrips
+const string foregrips[] = { "No Foregrip", "Angled Grip", "Half Grip", "Lightweight Grip", "Thumb Grip", "Vertical Grip" }
+// (Anti-recoil) Stocks
+const string stocks[] = { "No Stock", "Cheek Pad", "Tactical Stock", "Heavy Stock", "Folding Stock" }
+// (Anti-recoil) Weapon names
+const string weaponName[] = {
+	// AR (12)
+	"AKM", "Beryl M762", "G36C", "M416", "M16A4", "SCAR-L", "Mk47 Mutant", "QBZ", "AUG", "Groza", "ACE32", "K2",
+	// SMG (8)
+	"PP-19 Bizon", "Tommy Gun", "UMP45", "Micro UZI", "Vector", "MP5K", "P90", "MP9",
+	// LMG (3)
+	"DP-28", "M249", "MG3 (660rpm)", "MG3 (990rpm)",
+	// DMR (7)
+	"SLR", "Mini14", "SKS", "VSS", "QBU", "Mk14", "Mk12",
+	// SR (1)
+	"Sniper/Shotgun"
+}
+// Weapon Select menu display
+const string weaponSelectDisplay[] = { "Primary", "Secondary", "Weapon Select" }
+// Weapon Select menu categories
+const string weaponSelectCategory[] = { "AR", "SMG", "LMG", "DMR", "Sniper/Shotgun" }
+// (Controller) Button layout descriptions
+const string buttonLayoutName[] = { "Type A", "Type B", "Type C" }
+// (Controller) Button names [PlayStation]
+const string controllerButtonsPS4[] = {
+	"not set", "", "",
+	"R1", "R2", "", "L1", "L2",
+	"", "", "", "", "",
+	"Up", "Down", "Left", "Right",
+	"Triangle", "Circle", "Cross", "Square"
+}
+// (Controller) Button names [XBOX]
+const string controllerButtonsXBOX[] = {
+	"not set", "", "",
+	"RB", "RT", "", "LB", "LT",
+	"", "", "", "", "",
+	"Up", "Down", "Left", "Right",
+	"Y", "B", "A", "X"
+}
+// (Controller) Bumper/Triggers
+const string bumperTriggers[] = { "Default", "Flipped" }
+
+// (Display) Color names
+const string colorName[] = {
+	"Red", "Gold", "Yellow", "Green", "Blue", "Purple", "Pink"
+}
+// (Display) Home screen messages
+const string homeScreenMessages[] = { "Empathy", "Version 2.15", "Swedemafia" }
+// (Menu) Edit menu names
+const string editMenuNames[] = {
+	/* Anti-drift */	"Anti-drift", "Calibration", "Drift Test", "Drift Values", 
+	/* Anti-recoil */	"1x Sensitivity", "2x Sensitivity", "3x Sensitivity", "4x Sensitivity", "6x Sensitivity", "8x Sensitivity",
+	/* Controller */	"Button Layout", "Bumper/Triggers",
+	/* Options */		"Auto Focus", "Auto Lean", "Fast Lean", "Hair Triggers", "Stance Tracker", "Stance Alert",
+	/* Profiles */		"Profile Buttons", "Profile Colors",
+	/* Settings */		"Block Rumble", "Deadzone", "Inverted", "Weapon Display", "VM Speed",
+	/* Toggles */		"Auto Parachute", "Auto Turbo", "Burst Fire"
+}
+// (Menu) Mod menu names
+const string modMenuNames[] = {
+	"Anti-drift", "Anti-recoil", "Controller",
+	"Options", "Profiles", "Settings", "Toggles"
+}
+// (Profiles) Profile toggle/color prompts
+const string profileToggleMsg[] = {
+	"Resync: ", "Switch: ", // Profile Switch
+	"Button 1: ", "Button 2: ", // Toggle Buttons
+	"Primary:   ", "Secondary: ", // Profile Colors
+	"Keyboard: " // Keyboard toggle
+}
+// Script paused notification
+const string scriptPausedMsg = "Vehicle Mode";
+// (Settings) Saved notification
+const string settingsSaved = "Settings Saved";
+// (Settings) Deadzone prompt
+const string stickName[] = { "Left: ", "Right: " }
+// (Settings) VM speed display
+const string vmSpeed[] = { "4ms", "6ms", "8ms", "Default" }
+// (Toggles) On/off messages
+const string toggleOffOn[] = { "Off", "On" }
+// (Toggles) Toggle combo messages
+const string toggleMessages[] = {
+	"Auto Chute: Off", "Auto Chute: On",
+	"Auto Turbo: Off", "Auto Turbo: On",
+	"Burst Fire: Off", "Burst Fire: On"
+}
+
+/**************************************************************/
+//	Constants (integers)
+/**************************************************************/
+// (Anti-recoil) Weapon keyboard key map
+const int8 weaponKey[] = {
+	KEY_Q, KEY_W, KEY_E, KEY_R, KEY_T, KEY_Y, KEY_U, KEY_I, KEY_O, KEY_P, KEY_LEFTBRACE, KEY_RIGHTBRACE,
+	KEY_A, KEY_S, KEY_D, KEY_F, KEY_G, KEY_H, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, KEY_APOSTROPHE, KEY_ENTER,
+	KEY_Z, KEY_X, KEY_C, KEY_V, KEY_B, KEY_N, KEY_M, KEY_COMMA
+}
+
+// (Anti-recoil) Weapon IDs
+enum {
+	akm, beryl, g36c, m416, m16a4, scar, mutant, qbz, aug, groza, ace32, k2,
+	bizon, tommy, ump, uzi, vector, mp5, p90, mp9, dp28, m249, mg3_660, mg3_990,
+	slr, mini14, sks, vss, qbu, mk14, mk12,
+	sniper_shotgun
+}
+
+// (Controller) List of possible buttons to be used for a toggle combination
+const int8 controllerButtons[] = {
+	XB1_VIEW,
+	XB1_RB, XB1_RT, XB1_LB, XB1_LT,
+	XB1_UP, XB1_DOWN, XB1_LEFT, XB1_RIGHT,
+	XB1_Y, XB1_B, XB1_A, XB1_X
+}
+
+// (Controller) Button Layout map
+const int8 buttonLayoutMap[][] = {
+	// Aim	  ADS	  Melee   Fire    Switch Interact Action Jump   LeanL   LeanR   Focus   Zoom
+	{ XB1_LT, XB1_LT, XB1_UP, XB1_RT, XB1_Y, XB1_X,   XB1_B, XB1_A, XB1_LS, XB1_RS, XB1_LB, XB1_RB }, // Type A
+	{ XB1_LB, XB1_LT, XB1_UP, XB1_RT, XB1_Y, XB1_X,   XB1_B, XB1_A, XB1_LS, XB1_RS, XB1_LB, XB1_RB }, // Type B
+	{ XB1_LT, XB1_LT, XB1_RIGHT, XB1_RT, XB1_Y, XB1_X, XB1_B, XB1_A, XB1_LB, XB1_RB, XB1_LS, XB1_RS} // Type C
+}
+// (Display) HSB color values
+const int16 colorValues[][] = {
+	{ 0, 100, 75 }, // Red
+	{ 17, 100, 100 }, // Gold
+	{ 30, 100, 100 }, // Yellow
+	{ 120, 100, 75 }, // Green
+	{ 200, 100, 50 }, // Blue
+	{ 300, 100, 50 }, // Purple
+	{ 359, 50, 75 }, // Pink
+	{ 20, 50, 100 }, // White
+	{ 135, 100, 75 }, // Teal
+	{ 10, 100, 75 } // Orange
+}
+// (Display) Line numbers for OLED_FONT_SMALL
+const int8 lineNumber[] = { 22, 34, 46 }
+// (Display) Font height
+const int8 fontHeight[] = { OLED_FONT_SMALL_HEIGHT, OLED_FONT_MEDIUM_HEIGHT, OLED_FONT_LARGE_HEIGHT }
+// (Display) Font width
+const int8 fontWidth[] = { OLED_FONT_SMALL_WIDTH, OLED_FONT_MEDIUM_WIDTH, OLED_FONT_LARGE_WIDTH }
+// (Setings) VM Speed
+const int8 vmSpeedValue[] = { -6, -4, -2, 0 }
+
+// Weapon Select menu category ranges
+const int8 weaponSelectCategoryMenu[][] = {
+	{ akm, k2 },
+	{ bizon, mp9 },
+	{ dp28, mg3_990 },
+	{ slr, mk12 },
+	{ sniper_shotgun, sniper_shotgun }
+}
+
+// Menus
+// (Menu) Edit menu items
+const int8 editMenuItems[][] = {
+	// Menu				  Minimum			Maximum
+	/* Anti-drift */	{ editMenuAntidrift, editMenuAntidriftValues },
+	/* Anti-recoil */	{ editMenu1xAdjustment, editMenu8xAdjustment },
+	/* Controller */	{ editMenuControllerButtonLayout, editMenuControllerBumperTriggers },
+	/* Options */		{ editMenuAutoFocus, editMenuStanceAlert },
+	/* Profiles */		{ editMenuProfileSwitch, editMenuProfileColors },
+	/* Settings */		{ editMenuBlockRumble, editMenuVMSpeed },
+	/* Toggles */		{ editMenuToggleAutoParachute, editMenuToggleBurstFire }
+}
+// (Menu) Edit menu IDs
+enum {
+	/* Anti-drift */	editMenuAntidrift, editMenuAntidriftCalibration, editMenuAntidriftTest, editMenuAntidriftValues,
+	/* Anti-recoil */	editMenu1xAdjustment, editMenu2xAdjustment, editMenu3xAdjustment, editMenu4xAdjustment, editMenu6xAdjustment, editMenu8xAdjustment,
+	/* Controller */	editMenuControllerButtonLayout, editMenuControllerBumperTriggers,
+	/* Options */		editMenuAutoFocus, editMenuAutoLean, editMenuFastLean, editMenuHairTriggers, editMenuStanceTracker, editMenuStanceAlert,
+	/* Profiles */		editMenuProfileSwitch, editMenuProfileColors,
+	/* Settings */		editMenuBlockRumble, editMenuDeadzone, editMenuInverted, editMenuWeaponDisplay, editMenuVMSpeed,
+	/* Toggles */		editMenuToggleAutoParachute, editMenuToggleAutoTurbo, editMenuToggleBurstFire
+}
+// (Menu) Mod menu items
+const int8 modMenuItems[][] = {
+	// Previous			Current			Next
+	{ modMenuToggles, modMenuAntidrift, modMenuAntiRecoil },
+	{ modMenuAntidrift, modMenuAntiRecoil, modMenuController },
+	{ modMenuAntiRecoil, modMenuController, modMenuOptions },
+	{ modMenuController, modMenuOptions, modMenuProfiles },
+	{ modMenuOptions, modMenuProfiles, modMenuSettings },
+	{ modMenuProfiles, modMenuSettings, modMenuToggles },
+	{ modMenuSettings, modMenuToggles, modMenuAntidrift }
+}
+
+// (Anti-recil) Menu items
+enum {
+	recoilVerticalBegin, recoilVerticalMid, recoilVerticalEnd,
+	recoilVerticalBeginT, recoilVerticalMidT,
+	recoilHorizontalBegin, recoilHorizontalMid, recoilHorizontalEnd,
+	recoilHorizontalBeginT, recoilHorizontalMidT
+}
+
+const int16 weaponIndex[] = {
+	/* Assault Rilfes */ 		0, 10, 14, 21, 29, 32, 38, 41, 52, 58, 66, 75,
+	/* Sub-machine Guns */ 		85, 94, 103, 111, 126, 141, 150, 158,
+	/* Light Machine Guns */ 	165, 175, 189, 196,
+	/* Designated Marksman */	204, 207, 210, 213, 221, 224, 227
+}
+
+// Weapon Recoil Data
+const int16 weaponData[][] = {
+
+		/* Assault Rifles */
+		
+	/* AKM */ { 0, 8 },
+			{ 93, 80 },
+		/* Vertical */
+			{ 24, 500 },
+			{ 30, 1100 },
+			{ 30, 500 },
+			{ 32, 600 },
+			{ 28, 200 },
+			{ 30, 300 },
+			{ 32, 500 },
+			{ 30, 650 },
+	/* Beryl */ { 0, 2 },
+			{ 93, 80 },
+		/* Vertical */
+			{ 32, 1200 },
+			{ 35, 2300 },
+	/* G36C */ { 0, 5 },
+			{ 93, 75 },
+		/* Vertical */
+			{ 25, 500 },
+			{ 32, 1100 },
+			{ 33, 500 },
+			{ 34, 900 },
+			{ 35, 500 },
+	/* M416 */ { 0, 6 },
+			{ 93, 75 },
+		/* Vertical */
+			{ 25, 400 },
+			{ 32, 1600 },
+			{ 33, 300 },
+			{ 34, 500 },
+			{ 35, 200 },
+			{ 34, 600 },
+	/* M16A4 */ { 0, 0 },
+			{ 89, 60 },
+			{ 19, 0 }, 
+	/* Scar-L */ { 0, 4 },
+			{ 93, 80 },
+		/* Vertical */
+			{ 25, 500 },
+			{ 27, 200 },
+			{ 29, 400 },
+			{ 32, 2800 },
+	/* Mutant Mk47 */ { 0, 0 },
+			{ 96, 85 },
+			{ 18, 0 },
+	/* QBZ */ { 0, 9 },
+			{ 91, 75 },
+		/* Vertical */
+			{ 24, 500 },
+			{ 28, 200 },
+			{ 29, 200 },
+			{ 32, 400 },
+			{ 33, 200 },
+			{ 34, 800 },
+			{ 33, 600 },
+			{ 32, 400 },
+			{ 33, 600 },
+	/* AUG */ { 0, 4 },
+			{ 92, 75 },
+		/* Vertical */
+			{ 24, 500 },
+			{ 26, 200 },
+			{ 29, 400 },
+			{ 30, 2600 },
+	/* Groza */ { 0, 6 },
+			{ 89, 75 },
+		/* Vertical */
+			{ 26, 500 },
+			{ 27, 200 },
+			{ 30, 600 },
+			{ 31, 1000 },
+			{ 32, 200 },
+			{ 31, 800 },
+	/* ACE32 */ { 0, 7 },
+			{ 92, 75 },
+		/* Vertical */
+			{ 28, 500 },
+			{ 29, 200 },
+			{ 30, 400 },
+			{ 31, 200 },
+			{ 32, 700 },
+			{ 33, 400 },
+			{ 32, 1300 },
+	/* K2 */ { 0, 8 },
+			{ 93, 77 },
+		/* Vertical */
+			{ 26, 200 },
+			{ 28, 200 },
+			{ 29, 200 },
+			{ 30, 200 },
+			{ 31, 400 },
+			{ 32, 1000 },
+			{ 33, 900 },
+			{ 34, 400 },
+			
+	/* Sub-machine Guns */
+	
+	/* PP-Bizon */ { 0, 7 },
+			{ 88, 82 },
+		/* Vertical */
+			{ 22, 400 },
+			{ 24, 200 },
+			{ 28, 300 },
+			{ 26, 2300 },
+			{ 24, 500 },
+			{ 25, 300 },
+			{ 26, 500 },
+	/* Tommy Gun */ { 0, 7 }, 
+			{ 88, 82 },
+		/* Vertical */
+			{ 26, 400 },
+			{ 28, 300 },
+			{ 31, 200 },
+			{ 33, 400 },
+			{ 35, 1600 },
+			{ 36, 700 },
+			{ 35, 900 },
+	/* UMP45 */ { 0, 6 },
+			{ 90, 82 },
+		/* Vertical */
+			{ 23, 400 },
+			{ 25, 300 },
+			{ 27, 300 },
+			{ 28, 300 },
+			{ 29, 1600 },
+			{ 31, 400 },
+	/* Micro Uzi */ { 0, 13 },
+			{ 90, 82 },
+		/* Vertical */
+			{ 23, 300 },
+			{ 25, 100 },
+			{ 28, 100 },
+			{ 30, 100 },
+			{ 31, 100 },
+			{ 32, 100 },
+			{ 33, 100 },
+			{ 34, 100 },
+			{ 35, 100 },
+			{ 36, 100 },
+			{ 37, 100 },
+			{ 38, 200 },
+			{ 39, 200 },
+	/* Vector */ { 0, 13 },
+			{ 90, 82 },
+		/* Vertical */
+			{ 29, 300 },
+			{ 30, 100 },
+			{ 31, 100 },
+			{ 32, 100 },
+			{ 33, 100 },
+			{ 34, 100 },
+			{ 35, 100 },
+			{ 36, 100 },
+			{ 37, 200 },
+			{ 38, 200 },
+			{ 39, 200 },
+			{ 40, 100 },
+			{ 41, 100 },
+	/* MP5K */ { 0, 7 },
+			{ 90, 82 },
+		/* Vertical */
+			{ 24, 100 },
+			{ 25, 200 },
+			{ 26, 200 },
+			{ 27, 200 },
+			{ 28, 200 },
+			{ 29, 1100 },
+			{ 28, 800 },
+	/* P90 */ { 0, 6 }, // 150
+			{ 90, 82 },
+		/* Vertical */
+			{ 25, 300 },
+			{ 26, 300 },
+			{ 27, 300 },
+			{ 28, 300 },
+			{ 24, 800 },
+			{ 22, 1000 },
+	/* MP9 */ { 0, 5 },
+			{ 90, 82 },
+		/* Vertical */
+			{ 24, 200 },
+			{ 25, 200 },
+			{ 26, 600 },
+			{ 25, 600 },
+			{ 23, 700 },
+		
+		/* Light Machine Guns */
+		
+	/* DP-28 */ { 0, 8 },
+			{ 65, 25 },
+		/* Vertical */
+			{ 26, 500 },
+			{ 25, 200 },
+			{ 26, 200 },
+			{ 27, 200 },
+			{ 28, 300 },
+			{ 29, 500 },
+			{ 31, 1200 },
+			{ 30, 2100 },
+	/* M249 */ { 0, 12 },
+			{ 75, 40 },
+		/* Vertical */
+			{ 27, 200 },
+			{ 29, 100 },
+			{ 30, 100 },
+			{ 31, 100 },
+			{ 32, 200 },
+			{ 31, 500 },
+			{ 30, 100 },
+			{ 29, 100 },
+			{ 28, 100 },
+			{ 27, 2700 },
+			{ 28, 2000 },
+			{ 27, 5800 },
+	/* MG3 (660rpm) */ { 0, 5 },
+			{ 75, 45 },
+		/* Vertical */
+			{ 22, 200 },
+			{ 25, 100 },
+			{ 29, 400 },
+			{ 30, 500 },
+			{ 28, 5500 },
+	/* MG3 (990rpm) */ { 0, 6 },
+			{ 75, 45 },
+		/* Vertical */
+			{ 26, 200 },
+			{ 38, 300 },
+			{ 32, 600 },
+			{ 29, 500 },
+			{ 30, 2700 },
+			{ 32, 120 },
+			
+		/* Designated Marksman Rifles */
+		
+	/* SLR */ { 0, 0 },
+		// Single  Spam
+			{ 95, 80 },
+			{ 21, 24 },
+	/* Mini14 */ { 0, 0 },
+		// Single  Spam
+			{ 90, 80 }, // Crouch/prone
+			{ 20, 23 },
+	/* SKS */ { 0, 0 },
+		// Single  Spam
+			{ 95, 80 }, // Crouch/prone
+			{ 21, 25 },
+	/* VSS */ { 0, 6 },
+			{ 90, 80 },
+		/* Vertical */
+			{ 28, 400 },
+			{ 60, 150 },
+			{ 42, 300 },
+			{ 60, 200 },
+			{ 55, 300 },
+			{ 57, 300 },
+	/* QBU */ { 0, 0 },
+		// Single  Spam
+			{ 90, 35 }, // Crouch/prone
+			{ 20, 26 }, 
+	/* Mk14 */ { 0, 0 },
+		// Single  Spam
+			{ 75, 45 }, // Crouch/prone
+			{ 23, 25 },
+	/* Mk12 */ { 0, 0 },
+		// Single  Spam
+			{ 90, 40 }, // Crouch/prone
+			{ 20, 26 }
+}
+			
+/**************************************************************/
+//	Begin script
+/**************************************************************/
+init {
+	// Initialize menu min/max
+	modMenuMin = modMenuAntidrift;
+	modMenuMax = modMenuToggles;
+	
+	// Initialize display buffer
+	displayBuffer = 1;
+	
+	// Set default weapons
+	currentWeapon[0] = akm;
+	currentWeapon[1] = slr;
+	currentCategory[0] = AR;
+	currentCategory[1] = DMR;
+	
+	 // Load user-defined settings
+	loadSettings();
+	
+	displayUpdate = TRUE;
+}
+
+main {
+	removeDriftAndApplyDeadzone(); // Remove stick drift and apply deadzone
+	if(!displayDepth) {
+		swapPS4(); // Fix PS4 issue
+		if(!checkPause()) {
+			if(!checkCombos()) {
+				// Check for Screen Saver, otherwise display Home Screen
+				if(autoParachute && displayUpdate && !combo_running(cboToggleAutoParachute)) {
+					cls_oled(OLED_BLACK);
+					printText(alignCenter, alignCenter, toggleMessages[toggleAutoParachute - 2 + autoParachute], OLED_FONT_SMALL, OLED_WHITE);
+					displayUpdate = FALSE;
+				} else if(!screenSaverEnabled && !autoParachute && !combo_running(cboWeaponDisplay)) {
+					if(screenSaverCounter >= 2000) {
+						screenSaverEnabled = TRUE; // Enable Screen Saver
+						cls_oled(OLED_BLACK); // Clear screen
+					} else if(!screenSaverCounter && displayUpdate) {
+						displayHomeScreen(); // Display Home Screen
+						vm_tctrl(vmSpeedValue[varVMSpeed]); // Set VM speed
+						displayUpdate = FALSE;
+					}
+					screenSaverCounter += get_rtime(); // Increase Screen Saver counter
+				} else if(screenSaverEnabled && !combo_running(cboWeaponDisplay) && varWeaponDisplay && !autoParachute) {
+					// Check for Weapon Display, otherwise do nothing
+					if(screenSaverWeaponCounter >= 7000) {
+						screenSaverWeaponCounter = 0;
+						cls_oled(OLED_BLACK);
+					} else if(screenSaverWeaponCounter == 3500) {
+						// Do not overlap combos as they both use the display
+						if(!combo_running(cboToggleBurstFire)) {
+							combo_run(cboWeaponDisplay);
+						}
+					}
+					// Increase Screen Saver Weapon Display counter
+					screenSaverWeaponCounter += get_rtime();
+				}
+				
+				// Check for Stance Tracker alert
+				if(varStanceTracker && varStanceAlert) {
+					if(stancePosition) {
+						if(stanceCounter >= 2000) {
+							combo_run(cboStanceAlert);
+							stanceCounter = 0;
+						} else {
+							stanceCounter += get_rtime();
+						}
+					}
+				}
+				
+				// Determine menu to enter, if any
+				if(get_ival(button[ads]) && event_press(XB1_MENU)) {
+					combo_stop_all();
+					reset_rumble();
+					displayDepth = 1; // Set display depth & enable update
+					displayUpdate = TRUE; // Enable display update
+					menuProfile = currentProfile; // Set current profile
+					screenSaverCounter = 0; // Reset Screen Saver
+					screenSaverWeaponCounter = 0; // Reset Weapon Display Counter
+					screenSaverEnabled = FALSE; // Set Screen Saver to OFF
+				} else if(get_ival(button[ads]) && event_press(XB1_VIEW)) {
+					combo_stop_all();
+					reset_rumble();
+					displayDepth = 3; // Set display depth
+					displayUpdate = TRUE; // Enable display update
+					menuProfile = currentProfile; // Set current profile
+					screenSaverCounter = 0; // Reset Screen Saver
+					screenSaverWeaponCounter = 0; // Reset Weapon Display counter
+					screenSaverEnabled = FALSE; // Set Screen Saver to OFF
+					lastCategory = currentCategory[currentProfile];
+					lastWeapon = currentWeapon[currentProfile];
+					lastMuzzle = antiRecoilMuzzle[currentProfile];
+					lastForegrip = antiRecoilForegrip[currentProfile];
+					lastStock = antiRecoilStock[currentProfile];
+					lastScope = antiRecoilScope[currentProfile];
+				} else if(get_ival(XB1_RB) && !autoParachute) {
+					// Check for Stance Tracker actions
+					if(varStanceTracker) {
+						if(event_press(XB1_A)) {
+							stancePosition = iif(stancePosition == 2, 0, 2); // Toggle prone
+							combo_run(cboStanceReset); // Run alert that stance is reset
+							stanceCounter = 0; // Reset stance counter
+						} else if(event_press(XB1_B)) {
+							stancePosition = !stancePosition; // Toggle between standing/crouched
+							combo_run(cboStanceReset); // Run alert that stance is reset
+							stanceCounter = 0; // Reset stance counter
+						} else if(event_press(XB1_X)) { 
+							screenSaverWeaponCounter = 3500;
+						} else if(event_press(XB1_VIEW)) {
+							stanceInventory = 0; // Reset map/inventory
+						} else if(event_press(XB1_MENU)) {
+							screenSaverWeaponCounter = 3500; // Reset display
+							for(i = 0; i < 2; i++) { // Reset attachments
+								antiRecoilScope[i] = 0;
+								antiRecoilMuzzle[i] = Muzzle_None;
+								antiRecoilForegrip[i] = Foregrip_None;
+								antiRecoilStock[i] = Stock_None;
+							}
+						}
+						// Cancel out buttons
+						set_val(XB1_A, 0);
+						set_val(XB1_B, 0);
+						set_val(XB1_VIEW, 0);
+						set_val(XB1_MENU, 0);
+					}
+					
+					// Check for attachment actions
+					if(event_press(XB1_UP)) {
+						cycleScope(); // Scope selector
+						screenSaverWeaponCounter = 3500;
+					} else if(event_press(XB1_DOWN)) {
+						cycleForegrip(); // Foregrip selector
+						screenSaverWeaponCounter = 3500;
+					} else if(event_press(XB1_LEFT)) {
+						cycleMuzzle(); // Muzzle selector
+						screenSaverWeaponCounter = 3500;
+					} else if(event_press(XB1_RIGHT)) {
+						cycleStock(); // Stock selector
+						screenSaverWeaponCounter = 3500;
+					}
+					
+					// Cancel out buttons
+					set_val(XB1_LEFT, 0);
+					set_val(XB1_RIGHT, 0);
+					set_val(XB1_UP, 0);
+					set_val(XB1_DOWN, 0);
+				}
+			}
+			
+			// Remove drift and apply deadzone if calibration is not running
+			if(!antiDriftCalibrationState && !displayDepth) {
+				checkOptions(); // Execute any running options
+				checkTriggers(); // Get trigger state & set hair triggers
+				checkAssist(); // Execute any enabled assists (Anti-recoil)
+				checkKeys(); // Check for keyboard presses
+				checkToggles(); // Execute any toggles
+				blockActionButtons(); // Block any buttons used in toggles/profile switches
+				
+				// Check if we need to track our stance
+				if(!autoParachute && varStanceTracker && !get_ival(XB1_RB)) {
+					if(event_release(button[action]) && !stanceInventory) {
+						if(get_ptime(button[action]) < 200) {
+							combo_stop(cboAlertStance);
+							stancePosition = iif(stancePosition == 2, 1, !stancePosition);
+						} else {
+							stancePosition = iif(stancePosition <= 1, 2, 0);
+						}
+					} else if(event_press(button[jump])) {
+						if(stancePosition) {
+							stancePosition = 0;
+						}
+					} else if(event_release(XB1_VIEW)) {
+						stanceInventory = iif(!stanceInventory || stanceInventory == 1, 2, 0);
+					} else if(event_release(XB1_MENU)) {
+						stanceInventory = iif(!stanceInventory || stanceInventory == 2, 1, 0);
+					} else if(event_release(XB1_B)) {
+						if(stanceInventory) {
+							stanceInventory = 0;
+						}
+					}
+				}
+				
+				// If Rapid Fire not enabled, Set LED color to notify user of current profile
+				if(!burstFire[currentProfile] && !autoTurbo && !autoParachute && !stancePosition && !stanceInventory) {
+					setProfileLedColor(currentProfile);
+				} else if(burstFire[currentProfile] && !stanceInventory) {
+					combo_run(cboAlertToggleEngaged); // If Rapid Fire enabled, enable alert
+				} else if(stancePosition && !stanceInventory) {
+					combo_run(cboAlertStance);
+				} else {
+					combo_stop_all();
+					setLedColor(white);
+				}
+			}
+		}
+		
+		// Check for Auto Turbo toggle
+		if(get_ival(varToggleButton[toggleAutoTurbo]) && event_press(varToggleButton[toggleAutoTurbo + 1]) && get_brtime(varToggleButton[toggleAutoTurbo + 1]) <= 240) {
+			combo_stop_all();
+			dispatchToggle(toggleAutoTurbo);
+		}
+		
+		// Engage Auto Turbo
+		if(autoTurbo) {
+			if(get_val(XB1_RT) && !get_val(XB1_LT) && !get_ival(XB1_Y)) {
+				set_val(XB1_LB, 100);	
+			}
+		}
+	} else if(displayDepth == 1) {
+		setProfileLedColor(menuProfile); // Set LED to Profile being edited
+		checkModMenuEvent(); // Check for mod menu events
+		checkToggles(); // Check for Profile switches
+	} else if(displayDepth == 2) {
+		if(editMenuIndex == editMenuProfileColors) {
+			setProfileLedColor(editMenuSelectedRow); // Set LED to Profile Color being edited
+		} else if(antiDriftCalibrationState) {
+			// Determine stick being calibrated
+			if(antiDriftCalibrationStick == antiDriftLeftStick) {
+				antiDriftCalibrationPolarStick = iif(antiDriftCalibrationDirection == antiDriftUp || antiDriftCalibrationDirection == antiDriftDown, POLAR_LY, POLAR_LX);
+			} else {
+				antiDriftCalibrationPolarStick = iif(antiDriftCalibrationDirection == antiDriftUp || antiDriftCalibrationDirection == antiDriftDown, POLAR_RY, POLAR_RX);
+			}
+			checkCalibrationRange(); // Check calibration range
+			setLedColor(iif(antiDriftCalibrationInRange, green, orange)); // Notify user of calibration state
+		} else {
+			setProfileLedColor(menuProfile); // Set LED to Profile being edited
+		}
+		
+		checkEditMenuEvent(); // Check for edit menu event
+		checkToggles(); // Check for Profile switches
+	} else if(displayDepth == 3) {
+		setProfileLedColor(currentProfile); // Set LED to Profile being edited
+		checkWeaponSelectEvent(); // Check for Weapon Select menu event
+		checkToggles(); // Check for profile switches
+	}
+	
+	blockMenuButtons(); // Block any buttons pressed if in a menu
+	checkBlockRumble(); // Always check for blocking rumbled called for by the game
+}
+
+// Block output to controller from menu actions
+function blockActionButtons() {
+	
+	// Loop through each toggle combination and block if being used
+	for(i = 0; i < sizeof(varToggleButton) / sizeof(varToggleButton[0]); i += 2) {
+		if(varToggleButton[i] && varToggleButton[i + 1]) {
+			if(get_val(varToggleButton[i]) && get_ptime(varToggleButton[i + 1]) < 250) {
+				set_val(varToggleButton[i + 1], 0);
+			}
+		}
+	}
+	
+	// Block quick edit recoil and entering the menu buttons
+	if(get_val(button[ads])) {
+		set_val(XB1_MENU, 0);
+		set_val(XB1_VIEW, 0);
+	}
+}
+
+// Block output to controller from menu actions
+function blockMenuButtons() {
+	// Block all buttons while in a menu
+	if(displayDepth) {
+		block_all_inputs();
+	}
+}
+
+// Prepares the display buffer for a multiple item menu
+function buildSelectedItemBuffer(type, message, value) {
+	// Build display
+	insertString(message);
+	
+	// Determine data type being used
+	if(type == displayString) {
+		insertString(value);
+	} else {
+		insertNumber(value);
+	}
+}
+
+// Checks if a weapon can use a muzzle and returns which kind
+function canUseMuzzle(x) {
+	
+	// Groza & Tommy is only Suppressor
+	if((x == groza) || (x == tommy)) {
+		return Muzzle_Suppressor;
+	} else if((x == p90) || (x == mp9) || (x == vss) || (x >= dp28 && x <= mg3_990)) {
+		return Muzzle_None;
+	}
+
+	return Muzzle_FlashHider;
+}
+
+// Checks if a weapon can use a foregrip and returns which kind
+function canUseForegrip(x) {
+	// Tommy can only use Vertical Grip
+	if(x == tommy) {
+		return Foregrip_Vertical;
+	} else if(x == vector) {
+		return Foregrip_Lightweight;
+	} else if(currentCategory[currentProfile] == AR && x != akm && x != m16a4 && x != groza && x != k2) {
+		return Foregrip_Angled;
+	} else if(currentCategory[currentProfile] == SMG && x != bizon && x != uzi && x != p90 && x != mp9) {
+		return Foregrip_Angled;
+	} else if(currentCategory[currentProfile] == DMR && x != slr && x != mini14 && x != vss && x != qbu && x != mk14) {
+		return Foregrip_Angled;
+	}
+	
+	return Foregrip_None;
+}
+
+// Checks if a weapon can use a stock and returns which kind
+function canUseStock(x) {
+	if(x == m16a4 || x == m416 || x == mutant || x == ace32 || x == vector || x == mp5 || x == m249) {
+		return Stock_Tactical; // OR Stock_Heavy
+	} else if (x == slr || x == sks || x == vss || x == mk14) {
+		return Stock_CheekPad;
+	} else if (x == uzi || x == mp9) {
+		return Stock_Folding;
+	}
+	
+	return Stock_None;
+}
+
+
+// Checks if weaponc an use a scope other than 1x/default
+function canUseScope(profile) {
+	switch(currentWeapon[profile]) {
+		case vss {}
+		case uzi {}
+		case tommy {}
+		case p90 {} 
+		case mp9 {
+			return FALSE;
+			break;
+		}
+	}
+	
+	return TRUE;
+}
+
+// Checks if a weapon can use a 8x scope
+function canUse8x() {
+	if(currentCategory[currentProfile] == DMR || currentWeapon[currentProfile] == m16a4 || currentWeapon[currentProfile] == mutant) {
+		return TRUE;
+	}
+	
+	return FALSE;
+}
+
+// Cycle through available foregrips for a specific weapon
+function cycleForegrip() {
+	switch(canUseForegrip(currentWeapon[currentProfile])) {
+		case Foregrip_Angled { // Can use anything
+			antiRecoilForegrip[currentProfile] = cycleListOption(antiRecoilForegrip[currentProfile], cycleValueUp, Foregrip_Vertical, Foregrip_None); 
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeForegrip);
+			break;	
+		} case Foregrip_Vertical { // Vertical only (i.e. Tommy)
+			antiRecoilForegrip[currentProfile] = iif(!antiRecoilForegrip[currentProfile], Foregrip_Vertical, Foregrip_None);
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeForegrip);
+			break;
+		} case Foregrip_Lightweight {
+			if(!antiRecoilForegrip[currentProfile]) {
+				antiRecoilForegrip[currentProfile] = Foregrip_Half;
+			} else if(antiRecoilForegrip[currentProfile] == Foregrip_Half) {
+				antiRecoilForegrip[currentProfile] = Foregrip_Lightweight;
+			} else if(antiRecoilForegrip[currentProfile] == Foregrip_Lightweight) {
+				antiRecoilForegrip[currentProfile] = Foregrip_Vertical;
+			} else if(antiRecoilForegrip[currentProfile] == Foregrip_Vertical) {
+				antiRecoilForegrip[currentProfile] = Foregrip_None;
+			}
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeForegrip);
+			break;
+		}
+	}
+}
+
+// Cycle through available muzzles for a specific weapon
+function cycleMuzzle() {
+	switch(canUseMuzzle(currentWeapon[currentProfile])) {
+		case Muzzle_FlashHider { // Flash Hider = can use anything
+			antiRecoilMuzzle[currentProfile] = cycleListOption(antiRecoilMuzzle[currentProfile], cycleValueUp, Muzzle_Suppressor, Muzzle_None); 
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeMuzzle);
+			break;
+		} case Muzzle_Suppressor { // Limited to Suppressor only (i.e. Tommy / Groza)
+			if(!antiRecoilMuzzle[currentProfile]) {
+				antiRecoilMuzzle[currentProfile] = Muzzle_Suppressor;
+			} else {
+				antiRecoilMuzzle[currentProfile] = Muzzle_None;
+			}
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeMuzzle);
+			break;	
+		}
+	}
+}
+
+// Cycle through available scopes for a specific weapon
+function cycleScope() {
+	if(canUseScope(currentProfile)) {
+		antiRecoilScope[currentProfile] = cycleListOption(antiRecoilScope[currentProfile], cycleValueUp, iif(canUse8x(), 5, 4), 0);
+		combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+		combo_stop(cboSwitchProfile); // Just incase it was using OLED
+		combo_restart(cboChangeScope); // Alert user via rumble
+	}
+}
+
+// Cycle through available stocks for a specific weapon
+function cycleStock() {
+	switch(canUseStock(currentWeapon[currentProfile])) {
+		case Stock_CheekPad {
+			antiRecoilStock[currentProfile] = !antiRecoilStock[currentProfile];
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeStock);
+			break;
+		} case Stock_Tactical {
+			if(!antiRecoilStock[currentProfile]) {
+				antiRecoilStock[currentProfile] = Stock_Tactical;
+			} else if(antiRecoilStock[currentProfile] == Stock_Tactical) {
+				antiRecoilStock[currentProfile] = Stock_Heavy;
+			} else if(antiRecoilStock[currentProfile] == Stock_Heavy) {
+				antiRecoilStock[currentProfile] = Stock_None;
+			}
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeStock);
+			break;
+		} case Stock_Folding {
+			antiRecoilStock[currentProfile] = iif(antiRecoilStock[currentProfile] == Stock_None, Stock_Folding, Stock_None);
+			combo_stop(cboToggleBurstFire); // Stop Burst Fire incase it is running taking up the OLED
+			combo_stop(cboSwitchProfile); // Just incase it was using OLED
+			combo_restart(cboChangeStock);
+			break;
+		}
+	}
+}
+
+// Checks the stick when in calibration mode to make sure the
+// user has moved the stick to the appropriate range prior to
+// releasing the stick and setting the new value
+function checkCalibrationRange() {
+	// Determine target range
+	if((antiDriftCalibrationDirection == antiDriftLeft) || (antiDriftCalibrationDirection == antiDriftUp)) {
+		antiDriftCalibrationLow = -11468; // 35
+		antiDriftCalibrationHigh = -8191 // 25
+	} else {
+		antiDriftCalibrationLow = 8191; // 25
+		antiDriftCalibrationHigh = 11468; // 35
+	}
+	
+	// Get stick value
+	antiDriftCalibrationRangeValue = get_val(antiDriftCalibrationPolarStick);
+	
+	// See if stick is moved within boundaries
+	if((antiDriftCalibrationRangeValue >= antiDriftCalibrationLow) && (antiDriftCalibrationRangeValue <= antiDriftCalibrationHigh)) {
+		// Notify user it is in range and allow calibration to proceed
+		antiDriftCalibrationInRange = TRUE;
+		antiDriftCalibrationCanSet = TRUE;
+	} else if(((antiDriftCalibrationDirection == antiDriftLeft) || (antiDriftCalibrationDirection == antiDriftUp)) && antiDriftCalibrationRangeValue < antiDriftCalibrationLow) {
+		// Stick moved too far, reading will be inaccurate.  Stick pulls too hard back to center
+		antiDriftCalibrationCanSet = FALSE;
+		antiDriftCalibrationInRange = FALSE;
+	} else if(((antiDriftCalibrationDirection == antiDriftRight) || (antiDriftCalibrationDirection == antiDriftDown)) && antiDriftCalibrationRangeValue > antiDriftCalibrationHigh) {
+		// Stick moved too far, reading will be inaccurate.  Stick pulls too hard back to center
+		antiDriftCalibrationCanSet = FALSE;
+		antiDriftCalibrationInRange = FALSE;
+	} else {
+		// Release zone not met
+		antiDriftCalibrationInRange = FALSE;
+	} 
+}
+
+// Checks if a status change combo is running (i.e. action failed/success)
+function checkCombos() {
+	if(combo_running(cboActionFailed)) {
+		return 1;
+	} else if(combo_running(cboActionSuccess)) {
+		return 1;
+	} else if(combo_running(cboSaveSettings)) {
+		return 1;
+	} else if(combo_running(cboToggleOn) || combo_running(cboToggleOff)) {
+		return 1;
+	}
+	return 0;
+}
+
+
+// Check and perform display update
+function checkDisplayUpdate() {
+	// Check for a display update
+	if(displayUpdate) {
+		// Clear display
+		cls_oled(OLED_BLACK);
+		// Determine menu to display
+		if(displayDepth == 1) {
+			displayModMenu(); // Display mod menu
+		} else if(displayDepth == 2) {
+			displayEditMenu(); // Display edit menu
+		} else if(displayDepth == 3) {
+			displayWeaponSelect(); // Display Weapon Select menu
+		}
+	}
+}
+
+// Checks for key presses on the keyboard
+function checkKeys() {
+	// Loop through each possible weapon
+	for(i = 0; i < sizeof(weaponKey); i++) {
+		// Check if user is pressing a key that corresponds to a weapon
+		if(get_keyboard(weaponKey[i])) {
+			// Change current weapon on current profile
+			currentWeapon[currentProfile] = i;
+			// Check for Burst Fire, don't allow it to transfer to automatic weapon
+			if(burstFire[currentProfile] && isAutomatic(currentWeapon[currentProfile])) {
+				burstFire[currentProfile] = FALSE;
+			}
+			// Reset scope
+			if(isAutomatic(currentWeapon[currentProfile])) {
+				antiRecoilScope = 0;
+			} else {
+				antiRecoilScope = 3;
+			}
+			switchProfile(currentProfile);
+			return;
+		}
+	}
+	
+	// Check for scope change
+	if(canUseScope(currentProfile)) {
+		if(get_keyboard(KEY_1) || get_keyboard(KEY_KP1)) {
+			antiRecoilScope[currentProfile] = 0; // 1x
+			cycleScope();
+		} else if(get_keyboard(KEY_2) || get_keyboard(KEY_KP2)) {
+			antiRecoilScope[currentProfile] = 1; // 2x
+			cycleScope();
+		} else if(get_keyboard(KEY_3) || get_keyboard(KEY_KP3)) {
+			antiRecoilScope[currentProfile] = 2; // 3x
+			cycleScope();
+		} else if(get_keyboard(KEY_4) || get_keyboard(KEY_KP4)) {
+			antiRecoilScope[currentProfile] = 4; // 4x
+			cycleScope();
+		} else if(get_keyboard(KEY_6) || get_keyboard(KEY_KP6)) {
+			antiRecoilScope[currentProfile] = 5; // 6x
+			cycleScope();
+		} else if(canUse8x() && (get_keyboard(KEY_8) || get_keyboard(KEY_KP8))) {
+			antiRecoilScope[currentProfile] = 6; // 8x
+			cycleScope();
+		}
+	}
+}
+
+// Determine which Assist mods must be executed
+// - Aim Assist (+etc.), Rotation Assist, Anti-recoil
+function checkAssist() {
+	if(currentWeapon[currentProfile] < sniper_shotgun) {
+		// Check Anti-recoil
+		if(varControllerButtonLayout == cblTypeA) {
+			if(get_val(button[fire]) && isAutomatic(currentWeapon[currentProfile])) {
+				executeAntiRecoil();
+			} else if((event_press(button[fire]) && !isAutomatic(currentWeapon[currentProfile])) || combo_running(cboBurstFire)) {
+				executeAntiRecoil();
+			} else {
+				antiRecoilMaxY = 0;
+				antiRecoilIndexY = 0;
+				antiRecoilAdjustment = 0;
+			}
+			
+		} else if(varControllerButtonLayout >= cblTypeB) {
+			if(get_val(button[ads]) && get_val(button[fire]) && isAutomatic(currentWeapon[currentProfile])) {
+				executeAntiRecoil();
+			} else if((get_val(button[ads]) && event_press(button[fire]) && !isAutomatic(currentWeapon[currentProfile])) || combo_running(cboBurstFire)) {
+				executeAntiRecoil();
+			} else if (!get_val(button[fire])) {
+				antiRecoilMaxY = 0;
+				antiRecoilIndexY = 0;
+				antiRecoilAdjustment = 0;
+			}
+		}
+	}
+}
+
+// Checks for rumble block state
+function checkBlockRumble() {
+	if(varBlockRumble) {
+		block_rumble();
+	}
+}
+
+// Check for edit menu event
+function checkEditMenuEvent() {
+	// See if edit menu needs to update to the display
+	checkDisplayUpdate();
+	
+	// See if we are setting toggle combination buttons
+	switch(editMenuIndex) {
+		case editMenuProfileSwitch {
+			createToggle(toggleProfile);
+			break;
+		} case editMenuToggleAutoParachute {
+			createToggle(toggleAutoParachute);
+			break;
+		} case editMenuToggleAutoTurbo {
+			createToggle(toggleAutoTurbo);
+			break;
+		} case editMenuToggleBurstFire {
+			createToggle(toggleBurstFire);
+			break;
+		}
+	}
+	
+	// Check for events (only responsive to presses under 1000ms)
+	if(checkEvent(XB1_LEFT)) { // Request edit menu cycle left
+		cycleEditMenu(editMenuLeft);
+	} else if(checkEvent(XB1_RIGHT)) { // Request edit menu cycle right
+		cycleEditMenu(editMenuRight);
+	} else if(checkEvent(XB1_UP)) { // Request edit menu cycle up
+		cycleEditMenu(editMenuUp);
+	} else if(checkEvent(XB1_DOWN)) { // Request edit menu cycle down
+		cycleEditMenu(editMenuDown);
+	} else if(checkEvent(XB1_A)) {
+		cycleEditMenu(editMenuEnter);
+	} else if(checkEvent(XB1_B)) { // Exit edit menu to mod menu
+		cycleEditMenu(editMenuExit);
+	} else if(checkEvent(XB1_VIEW)) {
+		cycleEditMenu(editMenuAction);
+	} else if(checkEvent(XB1_RB)) { // Next page
+		cycleEditMenu(editMenuNextPage);
+	} else if(checkEvent(XB1_LB)) { // Previous page
+		cycleEditMenu(editMenuPreviousPage);
+	}
+	
+	if(editMenuIndex == editMenuAntidriftTest) {
+		// Constantly update display
+		displayUpdate = TRUE;
+	}
+}
+
+// Determine if an event is being called
+function checkEvent(button) {
+	return (event_release(button) && (get_ptime(button) < 720));
+}
+
+// Check for mod menu event
+function checkModMenuEvent() {
+	// See if edit menu needs to update to the display
+	checkDisplayUpdate();
+	
+	// Check for events
+	if(event_press(XB1_DOWN)) { // Request mod menu cycle downwards
+		cycleModMenu(modMenuDown);
+	} else if(event_press(XB1_UP)) {// Request mod menu cycle upwards
+		cycleModMenu(modMenuUp); 
+	} else if(event_press(XB1_A)) { // Request enter mod menu
+		cycleModMenu(modMenuEnter);
+	} else if(event_release(XB1_B)) { // Exit mod menu to home screen
+		cycleModMenu(modMenuExit);
+	}
+}
+
+int leanDirection;
+int isAutoLean;
+
+combo cboAutoLean {
+	set_val(leanDirection, 100);
+	wait(40);
+}
+
+// Checks for running options and executes them if enabled
+function checkOptions() {
+	// Bumper/Triggers
+	if(varControllerBumperTriggers) {
+		if(get_ival(XB1_LB)) {
+			set_val(XB1_LB, 0);
+			set_val(XB1_LT, 100);	
+		}
+		if(get_ival(XB1_LT)) {
+			set_val(XB1_LT, 0);
+			set_val(XB1_LB, 100);
+		}
+		if(get_ival(XB1_RB)) {
+			set_val(XB1_RB, 0);
+			set_val(XB1_RT, 100);	
+		}
+		if(get_ival(XB1_RT)) {
+			set_val(XB1_RT, 0);
+			set_val(XB1_RB, 100);
+		}
+	}
+
+	// Auto Focus
+	if(varAutoFocus && (varControllerButtonLayout >= cblTypeB)) {
+		// If aiming, execute combo
+		if(get_val(button[ads]) && !get_val(button[zoom])) {
+			// If combo not running, execute it
+			if(!combo_running(cboAutoFocus)) {
+				combo_run(cboAutoFocus);
+			}
+		} else {
+			// If not aiming and combo running, stop it
+			if(combo_running(cboAutoFocus)) {
+				combo_stop(cboAutoFocus);	
+			}
+		}
+	}
+	
+	// Auto Lean
+	if(varAutoLean && get_ival(button[ads]) && (abs(get_ival(POLAR_LX) / 327) > 25)) {
+		if(get_ival(POLAR_LX) < 0) {
+			if(leanDirection != button[leanL] || !isAutoLean) {
+				// Lean left
+				leanDirection = button[leanL];
+				isAutoLean = TRUE;
+				// Run combo
+				combo_run(cboAutoLean);
+			}
+		} else {
+			if(leanDirection != button[leanR] || !isAutoLean) {
+				// Lean right
+				leanDirection = button[leanR];
+				isAutoLean = TRUE;
+				// Run combo
+				combo_run(cboAutoLean);
+			}	
+		}
+	} else if(varAutoLean && get_ival(button[ads]) && event_press(button[leanL])) {
+		isAutoLean = !isAutoLean;
+		leanDirection = iif(isAutoLean, button[leanL], 0);
+	} else if(varAutoLean && get_ival(button[ads]) && event_press(button[leanR])) {
+		isAutoLean = !isAutoLean;
+		leanDirection = iif(isAutoLean, button[leanR], 0);
+	} else if(varAutoLean && event_release(button[ads])) {
+		leanDirection = 0;
+		isAutoLean = FALSE;
+	}
+	
+	// Auto Parachute
+	if(autoParachute) {
+		if(event_press(XB1_UP) || (get_ival(XB1_UP) && get_ptime(XB1_UP) >= 300)) {
+			autoParachuteStrength[1] = cycleEditValue(autoParachuteStrength[1], cycleValueDown, 1, -100);
+		} else if(event_press(XB1_DOWN) || (get_ival(XB1_DOWN)&& get_ptime(XB1_DOWN) >= 300)) {
+			autoParachuteStrength[1] = cycleEditValue(autoParachuteStrength[1], cycleValueUp, 1, 100);
+		} else if(event_press(XB1_LEFT) || (get_ival(XB1_LEFT)&& get_ptime(XB1_LEFT) >= 300)) {
+			autoParachuteStrength[0] = cycleEditValue(autoParachuteStrength[0], cycleValueDown, 1, -100);
+		} else if(event_press(XB1_RIGHT) || (get_ival(XB1_RIGHT) && get_ptime(XB1_RIGHT) >= 300)) {
+			autoParachuteStrength[0] = cycleEditValue(autoParachuteStrength[0], cycleValueUp, 1, 100);
+		}
+		set_val(XB1_UP, 0);
+		set_val(XB1_DOWN, 0);
+		set_val(XB1_RIGHT, 0);
+		set_val(XB1_LEFT, 0);
+		set_val(XB1_LX, clamp(get_val(XB1_LX) + autoParachuteStrength[0], -100, 100));
+		set_val(XB1_LY, clamp(get_val(XB1_LY) + autoParachuteStrength[1], -100, 100));
+	}
+		
+	// Fast Lean
+	if(varFastLean && (event_release(button[ads]) || event_release(button[fire]))) {
+		// Anytime ADS or Fire is released, set leaning to off
+		isLeaning = FALSE
+		combo_stop(cboFastLean);
+	} else if(varFastLean) {
+		if(((varControllerButtonLayout >= cblTypeB) && get_val(button[ads]) && get_val(button[fire])) || (varControllerButtonLayout == cblTypeA && get_val(button[fire]))) {
+			// Check if RS is pressed to initiate lean combo
+			if(event_press(button[leanR])) {
+				// Toggle leaning
+				isLeaning = !isLeaning;
+				// Execute combo if leaning
+				if(isLeaning) {
+					combo_run(cboFastLean);
+				} else {
+					combo_stop(cboFastLean);
+				}
+			} else if(isLeaning) {
+				// If already leaning, continue with combo
+				combo_run(cboFastLean);
+			}
+		}
+	}
+	
+	// Burst Fire
+	if(burstFire[currentProfile] && event_press(button[fire]) && !combo_running(cboBurstFire)) {
+		// Only run combo if it is not already running
+		combo_run(cboBurstFire);
+	}
+}
+
+// Checks if the user is pausing the script (enter vehicle mode)
+function checkPause() {
+	// Check if pause button combination is pressed
+	if(!scriptPaused && get_val(button[fire]) && event_press(XB1_UP) && get_brtime(XB1_UP) <= 240) {
+		combo_stop_all();
+		cls_oled(OLED_BLACK); // Clear screen
+		scriptPaused = TRUE; // Set pause flag
+		screenSaverEnabled = FALSE; // Disable screen saver
+		screenSaverCounter = 0; // Reset screen saver timer
+		screenSaverWeaponCounter = 0; // Reset screen saver weapon counter timer
+		printText(alignCenter, alignCenter, scriptPausedMsg[0], OLED_FONT_SMALL, OLED_WHITE); // Display message
+	} else if(scriptPaused && event_press(XB1_B)) {
+		if(varStanceTracker) {
+			stancePosition = 1; // Will get reset to 0
+		}
+		cls_oled(OLED_BLACK); // Clear screen
+		autoTurbo = FALSE; // Disable auto turbo
+		scriptPaused = FALSE; // Unpause script
+		combo_stop(cboAlertScriptPaused); // Disable pause mode notification
+		screenSaverWeaponCounter = 3500;
+	} else if(scriptPaused) {
+		if(displayUpdate && !combo_running(cboToggleAutoTurbo)) {
+			if(!autoTurbo) {
+				printText(alignCenter, alignCenter, scriptPausedMsg[0], OLED_FONT_SMALL, OLED_WHITE); // Display message
+			} else {
+				printText(alignCenter, lineNumber[0], scriptPausedMsg[0], OLED_FONT_SMALL, OLED_WHITE);
+				printText(alignCenter, lineNumber[1], toggleMessages[toggleAutoTurbo - 2 + autoTurbo], OLED_FONT_SMALL, OLED_WHITE);
+			}
+			displayUpdate = FALSE; // Disable update
+		}
+		combo_run(cboAlertScriptPaused); // Enable vehicle mode notification
+	}
+	
+	return scriptPaused;
+}
+
+// Checks for toggle combination buttons to be pressed
+function checkToggles() {
+	// Only check for toggles when not in a menu
+	if(!displayDepth) {
+		// Loop through all toggle combinations
+		for(i = 0; i < sizeof(varToggleButton) / sizeof(varToggleButton[0]); i += 2) {
+			// Only process if a toggle is set
+			if(varToggleButton[i] && varToggleButton[i + 1]) {
+				// See if toggle is requested
+				if(get_val(varToggleButton[i]) && event_press(varToggleButton[i + 1]) && get_brtime(varToggleButton[i + 1]) <= 240) {
+					combo_stop_all();
+					dispatchToggle(i);
+					return;
+				}
+			}
+		}
+	}
+	
+	if(!displayDepth || displayDepth == 3) {
+		// Switch profile
+		if(varToggleButton[toggleProfile + 1] && event_press(varToggleButton[toggleProfile + 1]) && !stanceInventory) {
+			displayUpdate = TRUE;
+			switchProfile(!currentProfile);
+			lastCategory = currentCategory[currentProfile];
+			lastWeapon = currentWeapon[currentProfile];
+			lastMuzzle = antiRecoilMuzzle[currentProfile];
+			lastForegrip = antiRecoilForegrip[currentProfile];
+			lastStock = antiRecoilStock[currentProfile];
+			lastScope = antiRecoilScope[currentProfile];
+			return;
+		}
+	}
+}
+
+// Checks for triggers
+function checkTriggers() {
+	// Set stick position values and max out if buttons are pressed
+	if(holdingADS = get_val(button[ads])) {
+		if(varHairTriggers) {
+			set_val(button[ads], 100);
+		}
+	}
+	if(holdingFire = get_val(button[fire])) {
+		if(varHairTriggers) {
+			set_val(button[fire], 100);
+		}
+	}
+	
+	/*
+	WARNING: Assignment in conditional detected, did you mean '==' instead of '='?, this warning originated on line xxxx column 4
+	WARNING: Assignment in conditional detected, did you mean '==' instead of '='?, this warning originated on line xxxx column 4
+	
+	No, absolutely not. We want the assignment in the conditional.  We want to set the value and check it at the same time.
+	*/
+}
+
+// Correct stick input based on drift low/high values including deadzone and compensate for "lost" values
+function correctStickInput(low, high, deadzone, stick) {
+	// Calculate the boundaries
+	antiDriftLowValue = low - polarValues[deadzone];
+	antiDriftHighValue = high + polarValues[deadzone];
+	antiDriftStickValue = get_val(stick); // Get stick value
+	
+	// In the drift zone, so set stick to no movement
+	if((antiDriftStickValue >= antiDriftLowValue) && (antiDriftStickValue <= antiDriftHighValue)) {
+		set_val(stick, 0);
+		
+	// If user has moved stick under the lower boundary (left/up)
+	} else if(antiDriftStickValue < antiDriftLowValue) {
+		set_val(stick, clamp((antiDriftStickValue - antiDriftLowValue) - ((antiDriftStickValue / 327) * antiDriftLowValue) / 100, -32768, 32767));
+		
+	// If user has moved stick over the upper boundary (right/down)
+	} else if(antiDriftStickValue > antiDriftHighValue) {
+		set_val(stick, clamp((antiDriftStickValue - antiDriftHighValue) + ((antiDriftStickValue / 327) * antiDriftHighValue) / 100, -32768, 32767));
+		
+	// Just incase stick_value isn't in driftzone and doesn't meet other conditions
+	// (i.e. calculations equate to low/high value)
+	// At that point we still do not want to make any adjustment because we're not outside of the drift+deadzone
+	} else {
+		set_val(stick, 0);
+	}
+}
+
+// Creates a toggle combination
+function createToggle(toggle) {
+	// Loop through each controllerButtons and see what is being held down for 3/4 second
+	for(i = 0; i < 13; i++) {	
+		if(get_val(controllerButtons[i]) && (get_ptime(controllerButtons[i]) >= 720)) {
+			if(!editMenuSelectedRow) {
+				// Setting HOLD
+				varToggleButton[toggle] = setToggleButton(varToggleButton[toggle], controllerButtons[i], varToggleButton[toggle + 1]);
+				varToggleButton[toggle] = verifyToggleCombo(varToggleButton[toggle], toggle);
+			} else {
+				// Setting PRESS
+				varToggleButton[toggle + 1] = setToggleButton(varToggleButton[toggle + 1], controllerButtons[i], varToggleButton[toggle]);
+				varToggleButton[toggle + 1] = verifyToggleCombo(varToggleButton[toggle + 1], toggle);
+			}
+		}
+	}
+}
+
+// Cycles the edit menu
+function cycleEditMenu(direction) {
+	// Enable display update
+	displayUpdate = TRUE;
+	// Determine action from user
+	switch(direction) {
+		case editMenuAction {
+			if(editMenuIndex == editMenuAntidriftCalibration && !antiDriftCalibrationState) {
+				if(antiDriftCalibrationStick == antiDriftLeftStick) {
+					varAntidriftLeft[antiDriftCalibrationDirection] = 0;
+				} else {
+					varAntidriftRight[antiDriftCalibrationDirection] = 0;
+				}
+				antiDriftCalibrationCanSet = 3;
+				combo_run(cboCalibrationComplete); // Alert user of status
+				antiDriftCalibrationState = !antiDriftCalibrationState; // Keep process disabled as combo will flop this value positive
+			} else {
+				menuActionFailed();
+			}
+			break;
+		} case editMenuEnter { // Used for anti-drift calibration
+			if(editMenuIndex == editMenuAntidriftCalibration && antiDriftCalibrationState) {
+				// Only set if range was met
+				if(antiDriftCalibrationCanSet) {
+					determineAntidriftValue(); // Determine the value to set
+				}
+				combo_run(cboCalibrationComplete); // Alert user of status
+			} else if(editMenuIndex == editMenuAntidriftCalibration) {
+				antiDriftCalibrationState = !antiDriftCalibrationState; // Enter calibration process
+			} else {
+				menuActionFailed();
+			}
+			break;
+		} case editMenuExit { // When user presses B/Circle
+			if(editMenuIndex == editMenuAntidriftCalibration && antiDriftCalibrationState) {
+				antiDriftCalibrationCanSet = 2; // Flag for cancelled
+				combo_run(cboCalibrationComplete);
+			} else {
+				displayUpdate = TRUE;
+				displayDepth--; // Exit to Mod Menu
+				editMenuSelectedRow = 0; // Reset selected item index
+				editMenuIndex = 0; // Reset index
+			}
+			break;
+		} case editMenuNextPage { // When user presses RB
+			if((editMenuIndex == editMenuAntidriftCalibration) && (antiDriftCalibrationStick != antiDriftRightStick) && !antiDriftCalibrationState) {
+				antiDriftCalibrationStick = antiDriftRightStick;
+			} else {
+				menuActionFailed();
+			}
+			break;
+		} case editMenuPreviousPage { // When user presses LB
+			if((editMenuIndex == editMenuAntidriftCalibration) && (antiDriftCalibrationStick != antiDriftLeftStick) && !antiDriftCalibrationState) {
+				antiDriftCalibrationStick = antiDriftLeftStick;
+			} else {
+				menuActionFailed();
+			}
+			break;
+		} case editMenuLeft { // When user presses Dpad-Left
+			if(get_val(button[ads])) { // When user is holding ADS
+				if(editMenuIndex >= editMenu1xAdjustment && editMenuIndex <= editMenu8xAdjustment) { // (Anti Recoil) Adjustments
+					varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] = cycleEditValue(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment], cycleValueDown, 1, 0);
+				//} else if(editMenuIndex == editMenuVerticalMultiplier) { // (Anti-recoil) Vertical Multiplier
+				//	varAntiRecoilVerticalMultiplier = cycleEditValue(varAntiRecoilVerticalMultiplier, cycleValueDown, 1, 50);
+				} else if(editMenuIndex == editMenuAntidriftCalibration && !antiDriftCalibrationState) { // (Anti-drift) Set direction
+					if(antiDriftCalibrationDirection != antiDriftLeft) {
+						antiDriftCalibrationDirection = antiDriftLeft;
+					} else {
+						menuActionFailed();
+					}
+				} else if(editMenuIndex == editMenuProfileColors) { // (Profiles) Profile Colors
+					varProfileColor[editMenuSelectedRow] = cycleListOption(varProfileColor[editMenuSelectedRow], cycleValueDown, red, pink);
+				} else if(editMenuIndex == editMenuDeadzone) { // (Settings) Deadzone
+					varDeadzone[editMenuSelectedRow] = cycleEditValue(varDeadzone[editMenuSelectedRow], cycleValueDown, 1, 0);
+				} else {
+					menuActionFailed();
+				}
+			} else { // Cycle options
+				if(editMenuIndex == editMenuAntidrift && !varAntidrift) {
+					menuActionFailed(); // Anti-drift must be enabled to see rest of options
+				} else if(editMenuIndex == editMenuAntidriftCalibration && antiDriftCalibrationState) {
+					menuActionFailed(); // Cannot leave calibration menu if calibration is running
+				} else {
+					editMenuSelectedRow = 0; // Reset selected item index
+					editMenuIndex = cycleListOption(editMenuIndex, cycleValueDown, editMenuItems[modMenuIndex][editMenuMin], editMenuItems[modMenuIndex][editMenuMax]);
+					// Will not alert in DisplayEditMenu due to constant repeat, so enable here
+					if(editMenuIndex == editMenuAntidriftTest) {
+						menuActionSuccess();
+					}
+				}
+			}
+			break;
+		} case editMenuRight { // When user presses DPad-Right
+			if(get_val(button[ads])) { // When user holds ADS
+				if(editMenuIndex >= editMenu1xAdjustment && editMenuIndex <= editMenu8xAdjustment) { // (Anti Recoil) Adjustments
+					varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] = cycleEditValue(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment], cycleValueUp, 1, 200);
+				//} else if(editMenuIndex == editMenuVerticalMultiplier) { // (Anti-recoil) Vertical Multiplier
+				//	varAntiRecoilVerticalMultiplier = cycleEditValue(varAntiRecoilVerticalMultiplier, cycleValueUp, 1, 150);
+				} else if(editMenuIndex == editMenuAntidriftCalibration && !antiDriftCalibrationState) { // (Anti-drift) Set direction
+					if(antiDriftCalibrationDirection != antiDriftRight) {
+						antiDriftCalibrationDirection = antiDriftRight;
+					} else {
+						menuActionFailed();
+					}
+				} else if(editMenuIndex == editMenuProfileColors) { // (Profiles) Profile Colors
+					varProfileColor[editMenuSelectedRow] = cycleListOption(varProfileColor[editMenuSelectedRow], cycleValueUp, pink, red);
+				} else if(editMenuIndex == editMenuDeadzone) { // (Settings) Deadzone
+					varDeadzone[editMenuSelectedRow] = cycleEditValue(varDeadzone[editMenuSelectedRow], cycleValueUp, 1, 30);
+				} else {
+					menuActionFailed();
+				}
+			} else { // Cycle options
+				if(editMenuIndex == editMenuAntidrift && !varAntidrift) {
+					menuActionFailed(); // Anti-drift must be enabled to see rest of options
+				} else if(editMenuIndex == editMenuAntidriftCalibration && antiDriftCalibrationState) {
+					menuActionFailed(); // Cannot leave calibration menu if calibration is running
+				} else {
+					editMenuSelectedRow = 0; // Reset selected item index
+					editMenuIndex = cycleListOption(editMenuIndex, cycleValueUp, editMenuItems[modMenuIndex][editMenuMax], editMenuItems[modMenuIndex][editMenuMin]);
+					// Will not alert in DisplayEditMenu due to constant repeat, so enable here
+					if(editMenuIndex == editMenuAntidriftTest) {
+						menuActionSuccess();
+					}
+				}
+			}
+			break;
+		} case editMenuUp { // When user presses DPad-Up
+			if(get_val(button[ads])) { // When user holds ADS
+				if(editMenuIndex >= editMenu1xAdjustment && editMenuIndex <= editMenu8xAdjustment) { // (Anti Recoil) Adjustments
+					varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] = cycleEditValue(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment], cycleValueUp, 10, 200);
+				//} else if(editMenuIndex == editMenuVerticalMultiplier) { // (Anti-recoil) Vertical Multiplier
+				//	varAntiRecoilVerticalMultiplier = cycleEditValue(varAntiRecoilVerticalMultiplier, cycleValueUp, 10, 150);
+				} else if(editMenuIndex == editMenuAntidriftCalibration && !antiDriftCalibrationState) { // (Anti-drift) Set direction
+					if(antiDriftCalibrationDirection != antiDriftUp) {
+						antiDriftCalibrationDirection = antiDriftUp;
+					} else {
+						menuActionFailed();
+					}
+				} else if(editMenuIndex == editMenuDeadzone) { // (Settings) Deadzone
+					varDeadzone[editMenuSelectedRow] = cycleEditValue(varDeadzone[editMenuSelectedRow], cycleValueUp, 10, 30);
+				} else {
+					menuActionFailed();
+				}
+			} else { // Cycle options
+				if(editMenuIndex == editMenuAntidrift) { // (Anti-drift)
+					varAntidrift = !varAntidrift;
+				} else if(editMenuIndex == editMenuControllerButtonLayout) { // (Controller) Button Layout
+					varControllerButtonLayout = cycleListOption(varControllerButtonLayout, cycleValueUp, cblTypeC, cblTypeA);
+					setButtonLayout(); // Refresh button layout
+				} else if(editMenuIndex == editMenuControllerBumperTriggers) { // (Controller) Bumper/Triggers
+					varControllerBumperTriggers = !varControllerBumperTriggers;
+				} else if(editMenuIndex == editMenuAutoFocus) { // (Options) Auto Focus
+					varAutoFocus = !varAutoFocus;
+				} else if(editMenuIndex == editMenuAutoLean) { // (Options) Auto Lean
+					varAutoLean = !varAutoLean;
+				} else if(editMenuIndex == editMenuHairTriggers) { // (Options) Hair Triggers
+					varHairTriggers = !varHairTriggers;
+				} else if(editMenuIndex == editMenuFastLean) { // (Options) Fast Lean
+					varFastLean = !varFastLean;
+				} else if(editMenuIndex == editMenuStanceTracker) { // (Options) Stance Tracker
+					varStanceTracker = !varStanceTracker;
+					if(!varStanceTracker) {
+						stancePosition = 0; // Reset to standing
+					}
+				} else if(editMenuIndex == editMenuStanceAlert) { // (Options) Stance Alert
+					varStanceAlert = !varStanceAlert;
+				} else if(editMenuIndex == editMenuProfileSwitch) { // (Profiles) Profile Buttons
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueDown, 1, 0);
+				} else if(editMenuIndex == editMenuProfileColors) { // (Profiles) Profile Colors
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueDown, 1, 0);
+				} else if(editMenuIndex == editMenuBlockRumble) { // (Settings) Block Rumble
+					varBlockRumble = !varBlockRumble;
+				} else if(editMenuIndex == editMenuDeadzone) { // (Settings) Deadzone
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueDown, 1, 0);
+				} else if(editMenuIndex == editMenuInverted) { // (Settings) Inverted
+					varInverted = !varInverted;
+				} else if(editMenuIndex == editMenuWeaponDisplay) { // (Settings) Weapon Display
+					varWeaponDisplay = !varWeaponDisplay;
+				} else if(editMenuIndex == editMenuVMSpeed) { // (Settings) VM Speed
+					varVMSpeed = cycleEditValue(varVMSpeed, cycleValueUp, 1, vmSpeed10);
+				} else if(editMenuIndex == editMenuToggleAutoParachute) { // (Toggles) Auto Parachute
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueDown, 1, 0);
+				} else if(editMenuIndex == editMenuToggleAutoTurbo) { // (Toggles) Auto Turbo
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueDown, 1, 0);
+				} else if(editMenuIndex == editMenuToggleBurstFire) { // (Toggles) Burst Fire
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueDown, 1, 0);
+				} else {
+					menuActionFailed();
+				}
+			}
+			break;
+		} case editMenuDown { // When user presses DPad-Down
+			if(get_val(button[ads])) { // When user holds ADS
+				if(editMenuIndex >= editMenu1xAdjustment && editMenuIndex <= editMenu8xAdjustment) { // (Anti Recoil) Adjustments
+					varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] = cycleEditValue(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment], cycleValueDown, 10, 0);
+				//} else if(editMenuIndex == editMenuVerticalMultiplier) { // (Anti-recoil) Vertical Multiplier
+				//	varAntiRecoilVerticalMultiplier = cycleEditValue(varAntiRecoilVerticalMultiplier, cycleValueDown, 10, 50);
+				} else if(editMenuIndex == editMenuAntidriftCalibration && !antiDriftCalibrationState) { // (Anti-drift) Set direction
+					if(antiDriftCalibrationDirection != antiDriftDown) {
+						antiDriftCalibrationDirection = antiDriftDown;
+					} else {
+						menuActionFailed();
+					}
+				} else if(editMenuIndex == editMenuDeadzone) { // (Settings) Deadzone
+					varDeadzone[editMenuSelectedRow] = cycleEditValue(varDeadzone[editMenuSelectedRow], cycleValueDown, 10, 0);
+				} else {
+					menuActionFailed();
+				}
+			} else { // Cycle options
+				if(editMenuIndex == editMenuAntidrift) { // (Anti-drift)
+					varAntidrift = !varAntidrift;
+				} else if(editMenuIndex == editMenuControllerButtonLayout) { // (Controller) Button Layout
+					varControllerButtonLayout = cycleListOption(varControllerButtonLayout, cycleValueDown, cblTypeA, cblTypeC);
+					setButtonLayout(); // Refresh button layout
+				} else if(editMenuIndex == editMenuControllerBumperTriggers) { // (Controller) Bumper/Triggers
+					varControllerBumperTriggers = !varControllerBumperTriggers;
+				} else if(editMenuIndex == editMenuAutoFocus) { // (Options) Auto Focus
+					varAutoFocus = !varAutoFocus;
+				} else if(editMenuIndex == editMenuAutoLean) { // (Options) Auto Lean
+					varAutoLean = !varAutoLean;
+				} else if(editMenuIndex == editMenuHairTriggers) { // (Options) Hair Triggers
+					varHairTriggers = !varHairTriggers;
+				} else if(editMenuIndex == editMenuFastLean) { // (Options) Fast Lean
+					varFastLean = !varFastLean;
+				} else if(editMenuIndex == editMenuStanceTracker) { // (Options) Stance Tracker
+					varStanceTracker = !varStanceTracker;
+					if(!varStanceTracker) {
+						stancePosition = 0; // Reset to standing
+					}
+				} else if(editMenuIndex == editMenuStanceAlert) { // (Options) Stance Alert
+					varStanceAlert = !varStanceAlert;
+				} else if(editMenuIndex == editMenuProfileSwitch) { // (Profiles) Profile Buttons
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueUp, 1, 1);
+				} else if(editMenuIndex == editMenuProfileColors) { // (Profiles) Profile Colors
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueUp, 1, 1);
+				} else if(editMenuIndex == editMenuBlockRumble) { // (Settings) Block Rumble
+					varBlockRumble = !varBlockRumble;
+				} else if(editMenuIndex == editMenuDeadzone) { // (Settings) Deadzone
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueUp, 1, 1);
+				} else if(editMenuIndex == editMenuInverted) { // (Settings) Inverted
+					varInverted = !varInverted;
+				} else if(editMenuIndex == editMenuWeaponDisplay) { // (Settings) Weapon Display
+					varWeaponDisplay = !varWeaponDisplay;
+				} else if(editMenuIndex == editMenuVMSpeed) { // (Settings) VM Speed
+					varVMSpeed = cycleEditValue(varVMSpeed, cycleValueDown, 1, vmSpeed4);
+				} else if(editMenuIndex == editMenuToggleAutoParachute) { // (Toggles) Auto Parachute
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueUp, 1, 1);
+				} else if(editMenuIndex == editMenuToggleAutoTurbo) { // (Toggles) Auto Turbo
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueUp, 1, 1);
+				} else if(editMenuIndex == editMenuToggleBurstFire) { // (Toggles) Burst Fire
+					editMenuSelectedRow = cycleEditValue(editMenuSelectedRow, cycleValueUp, 1, 1);
+				} else {
+					menuActionFailed();
+				}
+			}
+			break;
+		}
+	}
+}
+
+// Cycle an edit menu value by step amount with change limited to a threshold
+function cycleEditValue(value, direction, step, threshold) {
+	// See what direction we are cycling the values
+	if(direction == cycleValueUp) {
+		if((value + step) <= threshold) {
+			return (value + step);
+		} else if(value == threshold) {
+			menuActionFailed();
+		} else {
+			return threshold;
+		}
+	} else {
+		if((value - step) >= threshold) {
+			return (value - step);
+		} else if(value == threshold) {
+			menuActionFailed();
+		} else {
+			return threshold;
+		}
+	}
+	
+	return value;
+}
+
+// Cycle a menu value
+function cycleListOption(value, direction, threshold, reset_value) {
+	// See what direction we are cycling the values
+	if(direction == cycleValueUp) {
+		if((value + 1) <= threshold) {
+			return value + 1;
+		}
+	} else {
+		if((value - 1) >= threshold) {
+			return value - 1;
+		}
+	}
+	
+	return reset_value;
+}
+
+// Cycle mod menu value
+function cycleModMenu(direction) {
+ 	// Enable display update
+	displayUpdate = TRUE;
+	
+	// Determine action and handle it accordingly
+	switch(direction) {
+		case modMenuEnter {
+			displayDepth++; // Advance to Edit Menu
+			displayUpdate = TRUE; // Enable display update
+			editMenuIndex = editMenuItems[modMenuIndex][editMenuMin]; // Set new edit menu index
+			break;
+		} case modMenuExit {
+			displayDepth--; // Exit to Home Screen
+			combo_run(cboSaveSettings); // Save settings upon exiting mod menu
+			break;
+		} case modMenuDown {
+			modMenuIndex++; // Cycle to next menu
+			if(modMenuIndex > modMenuMax) { // Check boundaries
+				modMenuIndex = modMenuMin; // Out of bounds, set to minimum
+			}
+			menuActionSuccess(); // Alert for successful action
+			break;
+		} case modMenuUp {
+			modMenuIndex--; // Cycle to previous menu
+			if(modMenuIndex < modMenuMin) { // Check boundaries
+				modMenuIndex = modMenuMax; // Out of bounds, set to maximum
+			}
+			menuActionSuccess(); // Alert for successful action
+			break;
+		}
+	}
+}
+
+// Determines what to set the anti-drift value to, if a new value was found
+function determineAntidriftValue() {
+	if(antiDriftCalibrationStick == antiDriftLeftStick) {
+		switch(antiDriftCalibrationDirection) {
+			case antiDriftUp {
+				antiDriftCalibrationValue = get_val(POLAR_LY);
+				if((antiDriftCalibrationValue < varAntidriftLeft[antiDriftUp]) || (varAntidriftLeft[antiDriftUp] == 0)) {
+					varAntidriftLeft[antiDriftUp] = antiDriftCalibrationValue;
+				}
+				break;
+			} case antiDriftDown {
+				antiDriftCalibrationValue = get_val(POLAR_LY);
+				if((antiDriftCalibrationValue > varAntidriftLeft[antiDriftDown]) || (varAntidriftLeft[antiDriftDown] == 0)) {
+					varAntidriftLeft[antiDriftDown] = antiDriftCalibrationValue;
+				}
+				break;
+			} case antiDriftLeft {
+				antiDriftCalibrationValue = get_val(POLAR_LX);
+				if((antiDriftCalibrationValue < varAntidriftLeft[antiDriftLeft]) || (varAntidriftLeft[antiDriftLeft] == 0)) {
+					varAntidriftLeft[antiDriftLeft] = antiDriftCalibrationValue;
+				}
+				break;
+			} case antiDriftRight {
+				antiDriftCalibrationValue = get_val(POLAR_LX);
+				if((antiDriftCalibrationValue > varAntidriftLeft[antiDriftRight]) || (varAntidriftLeft[antiDriftRight] == 0)) {
+					varAntidriftLeft[antiDriftRight] = antiDriftCalibrationValue;
+				}
+				break;
+			}
+		}
+	} else {
+		switch(antiDriftCalibrationDirection) {
+			case antiDriftUp {
+				antiDriftCalibrationValue = get_val(POLAR_RY);
+				if((antiDriftCalibrationValue < varAntidriftRight[antiDriftUp]) || (varAntidriftRight[antiDriftUp] == 0)) {
+					varAntidriftRight[antiDriftUp] = antiDriftCalibrationValue;
+				}
+				break;
+			} case antiDriftDown {
+				antiDriftCalibrationValue = get_val(POLAR_RY);
+				if((antiDriftCalibrationValue > varAntidriftRight[antiDriftDown]) || (varAntidriftRight[antiDriftDown] == 0)) {
+					varAntidriftRight[antiDriftDown] = antiDriftCalibrationValue;
+				}
+				break;
+			} case antiDriftLeft {
+				antiDriftCalibrationValue = get_val(POLAR_RX);
+				if((antiDriftCalibrationValue < varAntidriftRight[antiDriftLeft]) || (varAntidriftRight[antiDriftLeft] == 0)) {
+					varAntidriftRight[antiDriftLeft] = antiDriftCalibrationValue;
+				}
+				break;
+			} case antiDriftRight {
+				antiDriftCalibrationValue = get_val(POLAR_RX);
+				if((antiDriftCalibrationValue > varAntidriftRight[antiDriftRight]) || (varAntidriftRight[antiDriftRight] == 0)) {
+					varAntidriftRight[antiDriftRight] = antiDriftCalibrationValue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+// Handles a pressed toggle combination sequence
+function dispatchToggle(id) {
+	switch(id) {
+		case toggleProfile {
+			switchProfile(!currentProfile); // Switch profiles
+			break;	
+		} case toggleBurstFire {
+			if(!isAutomatic(currentWeapon[currentProfile])) {
+				burstFire[currentProfile] = !burstFire[currentProfile]; // Change burst fire state
+				screenSaverWeaponCounter = 0; // Reset weapon display counter
+				combo_stop(cboWeaponDisplay); // Stop weapon display
+				combo_restart(cboToggleBurstFire); // Run combo to alert user
+			}
+			break;
+		} case toggleAutoParachute {
+			autoParachute = !autoParachute; // Change auto parachute state
+			screenSaverWeaponCounter = 0; // Reset weapon display counter
+			combo_stop(cboWeaponDisplay); // Stop weapon display
+			combo_restart(cboToggleAutoParachute); // Run combo to alert user
+			if(autoParachute) {
+				// Set initial values
+				autoParachuteStrength[0] = get_val(XB1_LX);
+				autoParachuteStrength[1] = get_val(XB1_LY);
+				displayUpdate = TRUE;
+			}
+			break;
+		} case toggleAutoTurbo {
+			if(scriptPaused) {
+				autoTurbo = !autoTurbo; // Change auto turbo state
+				screenSaverWeaponCounter = 0; // Reset weapon display counter
+				combo_stop(cboWeaponDisplay); // Stop weapon display
+				combo_restart(cboToggleAutoTurbo); // Run combo to alert user
+				displayUpdate = TRUE;
+			}
+			break;
+		}
+	}
+}
+
+// Displays stick values for the Anti-drift Test menu
+function displayAntidriftTest(x, y, line) {
+	// Build display
+	insertCharacter(iif(x == POLAR_LX, ASCII_UPPER_L, ASCII_UPPER_R));
+	insertCharacter(ASCII_COLON);
+	insertCharacter(ASCII_SPACE);
+	insertNumber(get_val(x));
+	insertCharacter(ASCII_COMMA);
+	insertNumber(get_val(y));
+	flushBuffer(alignLeft, line, OLED_FONT_SMALL, OLED_WHITE);
+}
+
+// Displays the current anti-drift X/Y values for both sticks
+function displayAntidriftValues() {
+	// Draw a separator line down middle of OLED
+	line_oled(OLED_WIDTH >> 1, lineNumber[0] - 4, OLED_WIDTH >> 1, OLED_HEIGHT - 2, 1, OLED_WHITE);
+	// Draw each value
+	for(j = 0; j < 4; j++) {
+		// Left stick
+		insertString(antiDriftValues[j]);
+		insertNumber(varAntidriftLeft[j]);
+		flushBuffer(alignLeft - 2, 21 + (j * 10), OLED_FONT_SMALL, OLED_WHITE);
+		// Right stick
+		insertString(antiDriftValues[j]);
+		insertNumber(varAntidriftRight[j]);
+		flushBuffer((OLED_WIDTH >> 1) + 3, 21 + (j * 10), OLED_FONT_SMALL, OLED_WHITE);
+	}
+}
+
+// Draws a list of two items and highlights the selected item
+function displayDualSelection(type, message1, message2, value1, value2) {
+	
+	// Draw selected item background
+	rect_oled(alignLeft, lineNumber[editMenuSelectedRow] - 1, OLED_WIDTH - 9, OLED_FONT_SMALL_HEIGHT + 1, 1, OLED_WHITE);
+	
+	// Generate first item
+	buildSelectedItemBuffer(type, message1, value1);
+	flushSelectedItemBuffer(0, lineNumber[0]);
+	
+	// Generate second item
+	buildSelectedItemBuffer(type, message2, value2);
+	flushSelectedItemBuffer(1, lineNumber[1]);
+}
+
+// Display edit menu
+function displayEditMenu() {
+
+ 	drawBorder(); // Clears the screen and draws a border
+ 	
+ 	// Alert for success unless IgnoreAlert is enabled
+ 	if(!antiDriftCalibrationState && (editMenuIndex != editMenuAntidriftTest)) {
+  		menuActionSuccess();
+	}
+	
+	// Display the name of the menu and draw a line for formatting
+	printText(alignCenter, alignTop, editMenuNames[editMenuIndex], OLED_FONT_SMALL, OLED_WHITE); 
+	line_oled(1, OLED_FONT_SMALL_HEIGHT + 7, 127, OLED_FONT_SMALL_HEIGHT + 7, 1, OLED_WHITE);
+	
+	// See what setting we must display
+	switch (editMenuIndex) {
+		case editMenuAntidrift { // (Anti-drift) Toggle On/Off
+			printText(alignCenter, alignCenter, toggleOffOn[varAntidrift], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuAntidriftCalibration { // (Anti-drift) Calibration
+			if(antiDriftCalibrationState) {
+				// Calibration mode running
+				printText(alignCenter, alignCenter, antiDriftCalibrationStateMsg[antiDriftCalibrationState], OLED_FONT_SMALL, OLED_WHITE);
+			} else {
+				// Calibration mode not running
+				printText(alignCenter, lineNumber[0], antiDriftCalibrationStickPrompt[antiDriftCalibrationStick], OLED_FONT_SMALL, OLED_WHITE);
+				printText(alignCenter, lineNumber[1], antiDriftCalibrationDirectionPrompt[antiDriftCalibrationDirection], OLED_FONT_SMALL, OLED_WHITE);
+				rect_oled(alignLeft - 2, lineNumber[2], OLED_WIDTH - 6, OLED_FONT_SMALL_HEIGHT + 4, 1, OLED_WHITE);
+				printText(alignCenter, lineNumber[2] + 3, antiDriftCalibrationStateMsg[antiDriftCalibrationState], OLED_FONT_SMALL, OLED_BLACK);
+			}
+			break;
+		} case editMenuAntidriftTest { // (Anti-drift) Drift Test
+			displayAntidriftTest(POLAR_LX, POLAR_LY, lineNumber[0]);
+			displayAntidriftTest(POLAR_RX, POLAR_RY, lineNumber[1]);
+			break;
+		} case editMenuAntidriftValues { // (Anti-drift) Drift Values
+			displayAntidriftValues();
+			break;
+		//} case editMenuVerticalMultiplier { // (Anti-recoil) Vertical Multipler
+		//	printNumber(alignCenter, 28, varAntiRecoilVerticalMultiplier, OLED_FONT_MEDIUM, OLED_WHITE);
+		//	break;
+		} case editMenu1xAdjustment {  // (Anti Recoil) Adjustments
+		} case editMenu2xAdjustment { 
+		} case editMenu3xAdjustment { 
+		} case editMenu4xAdjustment { 
+		} case editMenu6xAdjustment { 
+		} case editMenu8xAdjustment {
+			if(!(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] % 10)) {
+				printNumber(alignCenter, 28, varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] / 10, OLED_FONT_MEDIUM, OLED_WHITE);
+			} else {
+				insertNumber(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] / 10);
+				insertCharacter(ASCII_PERIOD);
+				insertNumber(varAntiRecoilSensitivity[editMenuIndex - editMenu1xAdjustment] % 10);
+				flushBuffer(alignCenter, 28, OLED_FONT_MEDIUM, OLED_WHITE);
+			}
+			break;
+		} case editMenuControllerButtonLayout { // (Controller) Button Layout
+			printText(alignCenter, alignCenter, buttonLayoutName[varControllerButtonLayout], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuControllerBumperTriggers { // (Controller) Bumper/Triggers
+			printText(alignCenter, alignCenter, bumperTriggers[varControllerBumperTriggers], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuAutoFocus { // (Options) Auto Focus
+			printText(alignCenter, alignCenter, toggleOffOn[varAutoFocus], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuAutoLean { // (Options) Auto Lean
+			printText(alignCenter, alignCenter, toggleOffOn[varAutoLean], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuFastLean { // (Options) Fast Lean
+			printText(alignCenter, alignCenter, toggleOffOn[varFastLean], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuHairTriggers { // (Options) Hair Triggers
+			printText(alignCenter, alignCenter, toggleOffOn[varHairTriggers], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuStanceTracker {
+			printText(alignCenter, alignCenter, toggleOffOn[varStanceTracker], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuStanceAlert {
+			printText(alignCenter, alignCenter, toggleOffOn[varStanceAlert], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuProfileSwitch { // (Profiles) Profile Switch
+			displayDualSelection(displayString, profileToggleMsg[0], profileToggleMsg[1], iif(get_controller() == PIO_PS4, controllerButtonsPS4[varToggleButton[toggleProfile]], controllerButtonsXBOX[varToggleButton[toggleProfile]]), iif(get_controller() == PIO_PS4, controllerButtonsPS4[varToggleButton[toggleProfile + 1]], controllerButtonsXBOX[varToggleButton[toggleProfile + 1]]));
+			break;
+		} case editMenuProfileColors { // (Profiles) Profile colors
+			displayDualSelection(displayString, profileToggleMsg[4], profileToggleMsg[5], colorName[varProfileColor[0]], colorName[varProfileColor[1]]);
+			break;
+		} case editMenuBlockRumble { // (Settings) Block Rumble
+			printText(alignCenter, alignCenter, toggleOffOn[varBlockRumble], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuDeadzone { // (Settings) Deadzone
+			displayDualSelection(displayNumber, stickName[deadzoneLeft], stickName[deadzoneRight], varDeadzone[deadzoneLeft], varDeadzone[deadzoneRight]);
+			break;
+		} case editMenuInverted { // (Settings) Inverted
+			printText(alignCenter, alignCenter, toggleOffOn[varInverted], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuWeaponDisplay { // (Settings) Weapon Display
+			printText(alignCenter, alignCenter, toggleOffOn[varWeaponDisplay], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuVMSpeed { // (Settings) VM Speed
+			printText(alignCenter, alignCenter, vmSpeed[varVMSpeed], OLED_FONT_SMALL, OLED_WHITE);
+			break;
+		} case editMenuToggleAutoParachute { // (Toggles) Auto Parachute
+			displayToggle(toggleAutoParachute);
+			break;
+		} case editMenuToggleAutoTurbo { // (Toggles) Auto Turbo
+			displayToggle(toggleAutoTurbo);
+			break;
+		} case editMenuToggleBurstFire { // (Toggles) Burst Fire
+			displayToggle(toggleBurstFire);
+			break;
+		}
+	}
+	
+	// Disable display update
+	displayUpdate = FALSE;
+ }
+ 
+
+// Display home screen
+function displayHomeScreen() {
+
+ 	drawBorder(); // Clears the screen and draws a border
+ 	
+	// Show home screen
+	printText(alignCenter, 10, homeScreenMessages[homeScriptName], OLED_FONT_SMALL, OLED_WHITE);
+	printText(alignCenter, 26, homeScreenMessages[homeScriptVersion], OLED_FONT_SMALL, OLED_WHITE);
+	printText(alignCenter, 42, homeScreenMessages[homeScriptAuthor], OLED_FONT_SMALL, OLED_WHITE);
+ }
+ 
+ // Display mod menu
+ function displayModMenu() {
+ 
+ 	drawBorder(); // Clears the screen and draws a border
+  	menuActionSuccess(); // Alert for successful action
+	
+ 	// Display the mod menu
+	printText(alignCenter, alignTop, modMenuNames[modMenuItems[modMenuIndex][modMenuPrevious]], OLED_FONT_SMALL, OLED_WHITE);
+	printText(alignCenter, alignCenter, modMenuNames[modMenuItems[modMenuIndex][modMenuCurrent]], OLED_FONT_MEDIUM, OLED_WHITE);
+	printText(alignCenter, alignBottom, modMenuNames[modMenuItems[modMenuIndex][modMenuNext]], OLED_FONT_SMALL, OLED_WHITE);
+	
+ 	// Disable update
+ 	displayUpdate = FALSE;
+ }
+
+// Generates the display for editing toggles
+function displayToggle(id) {
+	if(get_controller() == PIO_PS4) {
+		displayDualSelection(displayString, profileToggleMsg[2], profileToggleMsg[3], controllerButtonsPS4[varToggleButton[id]], controllerButtonsPS4[varToggleButton[id + 1]]);
+	} else {
+		displayDualSelection(displayString, profileToggleMsg[2], profileToggleMsg[3], controllerButtonsXBOX[varToggleButton[id]], controllerButtonsXBOX[varToggleButton[id + 1]]);
+	}
+	
+	// Draw selected item background
+	//rect_oled(alignLeft, lineNumber[editMenuSelectedRow] + 1, OLED_WIDTH - 9, OLED_FONT_SMALL_HEIGHT + 1, 1, OLED_WHITE);
+
+	/*insertString(profileToggleMsg[2]);
+	insertString(iif(get_controller() == PIO_PS4, controllerButtonsPS4[varToggleButton[id]], controllerButtonsXBOX[varToggleButton[id]]));
+	flushBuffer(alignLeft, lineNumber[0], OLED_FONT_SMALL, iif(editMenuSelectedRow == i, OLED_BLACK, OLED_WHITE));
+	insertString(profileToggleMsg[3]);
+	insertString(iif(get_controller() == PIO_PS4, controllerButtonsPS4[varToggleButton[id + 1]], controllerButtonsXBOX[varToggleButton[id + 1]]));
+	flushBuffer(alignLeft, lineNumber[1], OLED_FONT_SMALL, iif(editMenuSelectedRow == i, OLED_BLACK, OLED_WHITE));*/
+}
+
+int lastCategory, lastWeapon, lastScope, lastMuzzle, lastForegrip, lastStock;
+
+
+function checkForegripSwap() {
+	if(currentCategory[currentProfile] != lastCategory) {
+		antiRecoilForegrip[currentProfile] = Foregrip_None;
+	} else if(canUseForegrip(currentWeapon[currentProfile]) != canUseForegrip(lastWeapon)) {
+		if(canUseForegrip(lastWeapon) == Foregrip_Vertical && canUseForegrip(currentWeapon[currentProfile])) {
+			// do nothing
+		} else if(canUseForegrip(currentWeapon[currentProfile]) == Foregrip_Vertical && lastForegrip != Foregrip_Vertical) {
+			antiRecoilForegrip[currentProfile] = Foregrip_None;
+		} else if(canUseForegrip(lastWeapon) == Foregrip_Lightweight && canUseForegrip(currentWeapon[currentProfile])) {
+			// do nothing
+		} else if(canUseForegrip(currentWeapon[currentProfile]) == Foregrip_Lightweight) {
+			if(antiRecoilForegrip[currentProfile] == Foregrip_Angled || antiRecoilForegrip[currentProfile] == Foregrip_Thumb) {
+				antiRecoilForegrip[currentProfile] = Foregrip_None;
+			}
+		} else {
+			antiRecoilForegrip[currentProfile] = Foregrip_None;
+		}
+	}
+}
+
+function checkMuzzleSwap() {
+	if(currentCategory[currentProfile] != lastCategory) {
+		antiRecoilMuzzle[currentProfile] = Muzzle_None;
+	} else if(canUseMuzzle(currentWeapon[currentProfile]) != canUseMuzzle(lastWeapon)) {
+		if(canUseMuzzle(currentWeapon[currentProfile]) == Muzzle_Suppressor && lastMuzzle != Muzzle_Suppressor) {
+			antiRecoilMuzzle[currentProfile] = Muzzle_None;
+		}
+	}
+}
+
+function checkStockSwap() {
+	if(canUseStock(currentWeapon[currentProfile]) != canUseStock(lastWeapon)) {
+		antiRecoilStock[currentProfile] = Stock_None;	
+	}
+}
+
+// Checks and handles any controller actions within the Weapon Select menu
+function checkWeaponSelectEvent() {
+	// Enable display update
+	displayUpdate = TRUE;
+	
+	// See if edit menu needs to update to the display
+	checkDisplayUpdate();
+	
+	if(event_release(XB1_B)) {
+		displayDepth = 0;
+		combo_run(cboWeaponDisplay);
+		
+		// If weapon cannot use scopes, set it to 0
+		if(!canUseScope(menuProfile)) {
+			antiRecoilScope = 0;
+		} else if(lastScope == 5 && !canUse8x()) {
+			antiRecoilScope = 0; // If 8x was set, and weapon switched, reset the scope
+		}
+		
+		checkForegripSwap();
+		checkMuzzleSwap();
+		checkStockSwap();
+		
+		// Check for Burst Fire, don't allow it to transfer to automatic weapon
+		if(burstFire[menuProfile] && isAutomatic(currentWeapon[menuProfile])) {
+			burstFire[menuProfile] = FALSE;
+		}
+	} else if(event_press(XB1_UP)) {
+		currentCategory[menuProfile] = cycleListOption(currentCategory[menuProfile], cycleValueUp, SNIPER_SHOTGUN, AR);
+		currentWeapon[menuProfile] = weaponSelectCategoryMenu[currentCategory[menuProfile]][0];
+	} else if(event_press(XB1_DOWN)) {
+		currentCategory[menuProfile] = cycleListOption(currentCategory[menuProfile], cycleValueDown, AR, SNIPER_SHOTGUN);
+		currentWeapon[menuProfile] = weaponSelectCategoryMenu[currentCategory[menuProfile]][0];
+	} else if(event_press(XB1_LEFT)) {
+		currentWeapon[menuProfile] = cycleListOption(currentWeapon[menuProfile], cycleValueDown, weaponSelectCategoryMenu[currentCategory[menuProfile]][0], weaponSelectCategoryMenu[currentCategory[menuProfile]][1]);
+	} else if(event_press(XB1_RIGHT)) {
+		currentWeapon[menuProfile] = cycleListOption(currentWeapon[menuProfile], cycleValueUp, weaponSelectCategoryMenu[currentCategory[menuProfile]][1], weaponSelectCategoryMenu[currentCategory[menuProfile]][0]);
+	}
+}
+
+// Generates the weapon select menu
+function displayWeaponSelect() {
+	drawBorder(); // Clears the screen and draws a border
+	
+	line_oled(1, OLED_FONT_SMALL_HEIGHT + 7, 127, OLED_FONT_SMALL_HEIGHT + 7, 1, OLED_WHITE);
+	line_oled(1, OLED_HEIGHT - OLED_FONT_SMALL_HEIGHT - 7, 127, OLED_HEIGHT - OLED_FONT_SMALL_HEIGHT - 7, 1, OLED_WHITE);
+	printText(alignCenter, alignTop, weaponSelectDisplay[2], OLED_FONT_SMALL, OLED_WHITE); 
+	printText(alignCenter, alignBottom, weaponSelectDisplay[menuProfile], OLED_FONT_SMALL, OLED_WHITE);
+	
+	if(currentWeapon[menuProfile] != sniper_shotgun) {
+		insertString(weaponSelectCategory[currentCategory[menuProfile]]);
+		flushBuffer(alignCenter, lineNumber[0], OLED_FONT_SMALL, OLED_WHITE);
+		insertString(weaponName[currentWeapon[menuProfile]]);
+		flushBuffer(alignCenter, lineNumber[1], OLED_FONT_SMALL, OLED_WHITE);
+	} else {
+		insertString(weaponSelectCategory[currentCategory[menuProfile]]);
+		flushBuffer(alignCenter, alignCenter, OLED_FONT_SMALL, OLED_WHITE);
+	}
+
+	displayUpdate = FALSE; // Disable any update
+}
+
+// Clears the screen and draws a border around the OLED
+function drawBorder() {
+	cls_oled(OLED_BLACK); // Clear screen
+	rect_oled(0, 0, 128, 63, 0, OLED_WHITE); // Draw border around OLED
+}
+
+const int8 muzzlePercentage_AR[] 	= { 0, 5, 10, 0 };
+const int8 muzzlePercentage_SMG[] 	= { 0, 8, 12, 0 };
+const int8 muzzlePercentage_DMR[] 	= { 0, 10, 20, 0 };
+const int16 scopePercentage[] 		= { 0, 25, 85, 85, 85, 100 }
+const int16 scopePercentage_DMR[] 	= { 0, 22, 72, 72, 85, 100 } // left off on 6x
+const int8 stockPercentage[] 		= { 0, 20, 0, 2, 10 };
+const int8 foregripPercentage_AR[] 	= { 0, 0, 8, 0, 5, 10 };
+const int8 foregripPercentage_SMG[] = { 0, 0, 8, 0, 5, 10 };
+
+const int16 sensitivity[] = {
+	315,
+	246, 235, 225, 215, 205, 193, 184, 178, 172, 157,
+	154, 154, 142, 140, 138, 136, 124, 124, 122, 113,
+	113, 110, 108, 103, 102, 90, 88, 88, 88, 86,
+	86, 86, 86, 84, 82, 79, 78, 76, 76, 76,
+	63, 60, 60, 59, 57, 52, 51, 46, 46, 42,
+	40, 40, 39, 39, 37, 36, 36, 36, 36, 35,
+	33, 30, 28, 28, 28, 27, 25, 25, 24, 22,
+	21, 21, 20, 20, 19, 19, 17, 17, 15, 14,
+	14, 13, 13, 13, 9, 9, 5, 4, 4, 0,
+	-1, -2, -3, -3, -4, -4, -5, -5, -6, -7,
+	-8, -9, -9, -9, -9, -10, -11, -11, -12, -15,
+	-16, -16, -16, -17, -18, -18, -18, -18, -19, -20,
+	-20, -20, -21, -22, -22, -23, -23, -24, -24, -24,
+	-24, -24, -24, -24, -24, -24, -24, -25, -25, -25,
+	-25, -25, -26, -26, -26, -27, -29, -29, -29, -30,
+	-31, -31, -31, -31, -31, -31, -32, -32, -32, -33,
+	-33, -33, -33, -34, -34, -34, -35, -35, -36, -37,
+	-37, -37, -38, -38, -39, -39, -39, -39, -39, -40,
+	-40, -40, -40, -40, -40, -41, -42, -42, -42, -43,
+	-43, -44, -44, -44, -44, -45, -45, -45, -45, -45
+}
+
+function adjustAntiRecoil(value) {
+
+	// Calculate sensitivity adjustment
+	antiRecoilAdjustment = sensitivity[varAntiRecoilSensitivity[antiRecoilScope[currentProfile]]];
+	
+	// Store a copy of the value for efficiency
+	antiRecoilAdjustValue = polarValues[value] + (antiRecoilAdjustment * 64);
+		
+	if(stancePosition) {
+		antiRecoilAdjustValue = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * iif(stancePosition == 1, antiRecoilCrouch, antiRecoilProne) / 100));
+	}
+	
+	// Foregrip adjustment
+	if(canUseForegrip(currentWeapon[currentProfile])) {
+		if(currentCategory[currentWeapon] == AR || currentCategory[currentWeapon] == DMR) {
+			antiRecoilForegripAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * foregripPercentage_AR[antiRecoilForegrip[currentProfile]] / 100));
+		} else if(currentCategory[currentWeapon] == SMG) {
+			antiRecoilForegripAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * foregripPercentage_SMG[antiRecoilForegrip[currentProfile]] / 100));
+		}
+	}
+	
+	// Stock adjustment
+	if(canUseStock(currentWeapon[currentProfile])) {
+		if(currentWeapon[currentProfile] != sks) {
+			antiRecoilStockAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * stockPercentage[antiRecoilStock[currentProfile]] / 100));
+		} else {
+			if(antiRecoilStock[currentProfile] == Stock_CheekPad) {
+				antiRecoilStockAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * 10 / 100));
+			}
+		}
+	}
+	
+	// Muzzle adjustment (variable per category)
+	if(canUseMuzzle(currentWeapon[currentProfile])) {
+		switch(currentCategory[currentProfile]) {
+			case AR {
+				antiRecoilMuzzleAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * muzzlePercentage_AR[antiRecoilMuzzle[currentProfile]] / 100));
+				break;
+			} case SMG {
+				antiRecoilMuzzleAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * muzzlePercentage_SMG[antiRecoilMuzzle[currentProfile]] / 100));
+				break;
+			} case DMR {
+				antiRecoilMuzzleAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * muzzlePercentage_DMR[antiRecoilMuzzle[currentProfile]] / 100));
+				break;
+			}
+		}
+	}
+	
+	// Calculate adjustment
+	antiRecoilAdjustValue = antiRecoilAdjustValue - antiRecoilForegripAdjust - antiRecoilMuzzleAdjust - antiRecoilStockAdjust;
+	
+	// Scope adjustment
+	if(canUseScope(currentWeapon[currentProfile])) {
+		switch(currentCategory[currentProfile]) {
+			case AR {
+				if(currentWeapon[currentProfile] == m16a4 || currentWeapon[currentProfile] == mutant) {
+					antiRecoilScopeAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * scopePercentage_DMR[antiRecoilScope[currentProfile]] / 100)); 
+				} else {
+					antiRecoilScopeAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * scopePercentage[antiRecoilScope[currentProfile]] / 100)); 
+				}
+				break;
+			} case SMG {
+				antiRecoilScopeAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * scopePercentage[antiRecoilScope[currentProfile]] / 100)); 
+				break;
+			} case LMG {
+				antiRecoilScopeAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * scopePercentage[antiRecoilScope[currentProfile]] / 100)); 
+				break;
+			} case DMR {
+				antiRecoilScopeAdjust = antiRecoilAdjustValue - (antiRecoilAdjustValue - (antiRecoilAdjustValue * scopePercentage_DMR[antiRecoilScope[currentProfile]] / 100)); 
+				break;
+			}
+		}
+	}
+	
+	// Add strength needed per scope
+	antiRecoilAdjustValue = antiRecoilAdjustValue + antiRecoilScopeAdjust;
+	
+	// Reset values for next time
+	antiRecoilForegripAdjust = antiRecoilMuzzleAdjust = antiRecoilStockAdjust = antiRecoilStanceAdjust = 0; 
+	
+	return antiRecoilAdjustValue;
+}
+
+int antiRecoilStanceAdjust;
+int antiRecoilAttachmentSpamAdjust, antiRecoilSpamAdjust;
+
+// Execute anti-recoil
+function executeAntiRecoil() {
+
+	// Check for number of vertical steps
+	if(!antiRecoilMaxY) {
+		antiRecoilIndexY = 2;
+		antiRecoilKickDurationY = 0;
+		antiRecoilMaxY = weaponData[weaponIndex[currentWeapon[currentProfile]]][1];
+		antiRecoilCrouch = weaponData[weaponIndex[currentWeapon[currentProfile]] + 1][0];
+		antiRecoilProne = weaponData[weaponIndex[currentWeapon[currentProfile]] + 1][1];
+	}
+	
+	// antiRecoilMaxY will be 0 if weapon is single fire (i.e. DMR)
+	if(antiRecoilMaxY) {
+		if(antiRecoilKickDurationY <= weaponData[weaponIndex[currentWeapon[currentProfile]] + antiRecoilIndexY][1]) {
+			antiRecoilY = weaponData[weaponIndex[currentWeapon[currentProfile]] + antiRecoilIndexY][0];
+			antiRecoilY = adjustAntiRecoil(antiRecoilY);
+			antiRecoilKickDurationY += get_rtime(); // Increase kick duration counter
+		} else {
+			if(antiRecoilIndexY <= antiRecoilMaxY) {
+				antiRecoilKickDurationY = 0;
+				antiRecoilIndexY++;
+				antiRecoilY = weaponData[weaponIndex[currentWeapon[currentProfile]] + antiRecoilIndexY][0];
+				antiRecoilY = adjustAntiRecoil(antiRecoilY);
+			} else {
+				antiRecoilY = 0;
+			}
+		}
+		
+		if(antiRecoilY) {
+			// Determine stance and anti-recoil adjustment
+			switch(stancePosition) {
+				case 0 {
+					output(aimY, antiRecoilY * iif(varInverted, -1, 1));
+					break;	
+				} case 1 {
+					output(aimY, (antiRecoilY - antiRecoilCrouch) * iif(varInverted, -1, 1));
+					break;
+				} case 2 {
+					output(aimY, (antiRecoilY - antiRecoilProne) * iif(varInverted, -1, 1));
+					break;
+				}
+			}
+		}
+	} else {
+		// Get anti-recoil value based on scope
+		antiRecoilY = weaponData[weaponIndex[currentWeapon[currentProfile]] + 2][0];
+		// Check for "spam" or "burst fire"
+		if(get_brtime(XB1_RT) < 180) {
+			// Calculate "spam" or "burst fire" compensation
+			if(currentCategory[currentProfile] == AR) {
+				// Calculate adjustment for DMR attachments
+				antiRecoilAttachmentSpamAdjust = muzzlePercentage_AR[antiRecoilMuzzle[currentProfile]] + foregripPercentage_AR[antiRecoilMuzzle[currentProfile]];
+				// Calculate adjustment specifically
+				antiRecoilAttachmentSpamAdjust += stockPercentage[antiRecoilMuzzle[currentProfile]];
+				// Calculate overall percentage adjustment
+				antiRecoilSpamAdjust = antiRecoilY - (antiRecoilY - (antiRecoilY * (30 + antiRecoilAttachmentSpamAdjust) / 100));
+			} else {
+				// Calculate adjustment for DMR attachments
+				antiRecoilAttachmentSpamAdjust = muzzlePercentage_DMR[antiRecoilMuzzle[currentProfile]] + foregripPercentage_AR[antiRecoilMuzzle[currentProfile]];
+				// Calculate adjustment specifically for SKS stock difference
+				if(currentWeapon[currentProfile] == sks && antiRecoilStock[currentProfile]) {
+					antiRecoilAttachmentSpamAdjust += 10;
+				} else {
+					antiRecoilAttachmentSpamAdjust += stockPercentage[antiRecoilMuzzle[currentProfile]];
+				}
+				// Calculate overall percentage adjustment
+				antiRecoilSpamAdjust = antiRecoilY - (antiRecoilY - (antiRecoilY * (75 + antiRecoilAttachmentSpamAdjust) / 100));
+			}
+			// Reset attachment spam adjust for next iteration
+			antiRecoilAttachmentSpamAdjust = 0;
+			// Apply "spam" or "burst fire" compensation
+			antiRecoilY += antiRecoilSpamAdjust;
+		}
+		combo_restart(cboSingleFire);
+	}
+}
+
+/*function executeAntiRecoil() {
+	
+	// Check for number of vertical steps
+	if(!antiRecoilMaxY) {
+		antiRecoilDirection = 1;
+		antiRecoilStep = 0;
+		antiRecoilValue = 0;
+		antiRecoilLastValue = 0;
+		antiRecoilTotalSteps = 0;
+		antiRecoilMaxY = weaponData[weaponIndex[currentWeapon[currentProfile]]][1];
+		antiRecoilCrouch = weaponData[weaponIndex[currentWeapon[currentProfile]] + 1][0] * 64;
+		antiRecoilProne = weaponData[weaponIndex[currentWeapon[currentProfile]] + 1][1] * 64;
+
+		// Check for scope data
+		if(canUseScope(currentProfile)) {
+			if(isAutomatic(currentWeapon[currentProfile])) {
+				antiRecoilScopeValue[0] = weaponData[weaponIndex[currentWeapon[currentProfile]] + 2][0];
+				antiRecoilScopeValue[1] = weaponData[weaponIndex[currentWeapon[currentProfile]] + 2][1];
+				antiRecoilAdjustment = varAntiRecoilSensitivity[antiRecoilScope[currentProfile]];
+				antiRecoilStartPosition = 3;
+			} else {
+				antiRecoilScopeValue[0] = weaponData[weaponIndex[currentWeapon[currentProfile]] + 2][0];
+				antiRecoilScopeValue[1] = weaponData[weaponIndex[currentWeapon[currentProfile]] + 3][0];
+				antiRecoilScopeValue[2] = weaponData[weaponIndex[currentWeapon[currentProfile]] + 4][0];
+				if(canUse8x()) {
+					antiRecoilScopeValue[3] = weaponData[weaponIndex[currentWeapon[currentProfile]] + 5][0];
+				}
+				antiRecoilAdjustment = varAntiRecoilSensitivity[2 + antiRecoilScope[currentProfile]];
+			}
+		} else {
+			antiRecoilScopeValue[0] = antiRecoilScopeValue[1] = 0;
+			antiRecoilStartPosition = 2;
+			antiRecoilAdjustment = 0;
+		}
+	}
+	
+	// Automatic weapon
+	if(antiRecoilMaxY) {
+		if(!antiRecoilTotalSteps) {
+			antiRecoilCurrentValue = polarValues[weaponData[weaponIndex[currentWeapon[currentProfile]] + antiRecoilIndexY + antiRecoilStartPosition][0]];
+			antiRecoilTime = weaponData[weaponIndex[currentWeapon[currentProfile]] + antiRecoilIndexY + antiRecoilStartPosition][1];
+			antiRecoilTotalChange = abs(antiRecoilCurrentValue - antiRecoilLastValue);
+			antiRecoilTotalSteps = antiRecoilTime / 10;
+		}
+		
+		if(antiRecoilIndexY < antiRecoilMaxY) {
+			if(antiRecoilStep < antiRecoilTotalSteps) {
+				if(antiRecoilDirection) {
+					antiRecoilValue += (antiRecoilTotalChange / antiRecoilTotalSteps);
+				} else {
+					antiRecoilValue -= (antiRecoilTotalChange / antiRecoilTotalSteps);
+				}
+				antiRecoilStep++;
+				antiRecoilY = antiRecoilValue;
+			} else {
+				antiRecoilStep = antiRecoilTotalSteps = 0;
+				antiRecoilIndexY++;
+				
+				if(antiRecoilIndexY <= antiRecoilMaxY) {
+					antiRecoilLastValue = antiRecoilCurrentValue;
+					if(antiRecoilLastValue < polarValues[weaponData[weaponIndex[currentWeapon[currentProfile]] + antiRecoilIndexY + antiRecoilStartPosition][0]]) {
+						antiRecoilDirection = 1;
+					} else {
+						antiRecoilDirection = 0;
+					}
+				}
+			}
+		} else {
+			antiRecoilY = 0;
+		}
+		
+		if(antiRecoilY) {
+			// Determine scope compensation
+			if(antiRecoilScope[currentProfile]) {
+				antiRecoilScopeCompensation = antiRecoilScopeValue[antiRecoilScope[currentProfile] - 1] * 64;
+			} else {
+				antiRecoilScopeCompensation = 0;
+			}
+			
+			// Determine stance and anti-recoil adjustment
+			switch(stancePosition) {
+				case 0 {
+					output(aimY, (antiRecoilY + (antiRecoilAdjustment * 64) + antiRecoilScopeCompensation) * iif(varInverted, -1, 1));
+					break;	
+				} case 1 {
+					output(aimY, (antiRecoilY + (antiRecoilAdjustment * 64) - antiRecoilCrouch + antiRecoilScopeCompensation) * iif(varInverted, -1, 1));
+					break;
+				} case 2 {
+					output(aimY, (antiRecoilY + (antiRecoilAdjustment * 64) - antiRecoilProne + antiRecoilScopeCompensation) * iif(varInverted, -1, 1));
+					break;
+				}
+			}
+		}
+	} else {
+		// Get anti-recoil value based on scope
+		antiRecoilY = antiRecoilScopeValue[antiRecoilScope[currentProfile]];
+		
+		// Check for "spam" or "burst fire"
+		if(get_brtime(XB1_RT) < 180) {
+			// Apply "spam" or "burst fire" compensation
+			antiRecoilY += weaponData[weaponIndex[currentWeapon[currentProfile]] + 2 + antiRecoilScope[currentProfile]][1];
+		}
+		combo_run(cboSingleFire);
+	}
+}*/
+
+combo cboSingleFire {
+	switch(stancePosition) {
+		case 0 {
+			output(aimY, adjustAntiRecoil(antiRecoilY) * iif(varInverted, -1, 1));
+			break;	
+		} case 1 {
+			output(aimY, (adjustAntiRecoil(antiRecoilY) - antiRecoilCrouch) * iif(varInverted, -1, 1));
+			break;
+		} case 2 {
+			output(aimY, (adjustAntiRecoil(antiRecoilY)  - antiRecoilProne) * iif(varInverted, -1, 1));
+			break;
+		}
+	}
+	wait(110);
+}
+
+// Flushes the display buffer
+function flushBuffer(x, y, size, color) {
+	// Decrement value as it must begin at 1
+	displayBuffer--; 
+	
+	// Check horizontal alignment
+	switch(x) { 
+		case alignRight {
+			x = OLED_WIDTH - (displayBuffer * fontWidth[size]) - 4;
+			break;	
+		} case alignCenter {
+			x = (OLED_WIDTH >> 1) - ((displayBuffer * fontWidth[size]) >> 1);
+			break;
+		}
+	}
+	
+	// Check vertical alignment
+	switch(y) { 
+		case alignCenter {
+			y = (OLED_HEIGHT >> 1) - (fontHeight[size] >> 1);
+			break;
+		} case alignBottom {
+			y = OLED_HEIGHT - fontHeight[size] - 4;
+			break;	
+		}
+	}
+	
+	puts_oled(x, y, size, displayBuffer, color); // Output display buffer
+	displayBuffer = 1; // Reset display buffer
+}
+
+// Flushes the display buffer for a multiple item menu
+function flushSelectedItemBuffer(item, line) {
+	if(editMenuSelectedRow == item) {
+		flushBuffer(alignLeft, line, OLED_FONT_SMALL, OLED_BLACK);
+	} else {
+		flushBuffer(alignLeft, line, OLED_FONT_SMALL, OLED_WHITE);
+	}
+}
+ 
+// Checks if a weapon is fully automatic
+function isAutomatic(index) {
+	return iif(index != m16a4 && index != mutant && index < slr || index == vss, TRUE, FALSE);
+}
+
+// Alternative for the ternary operator
+function iif(expression, truepart, falsepart) {
+	// Evaluate if expression is true
+	if(expression) {
+		return truepart; // Return truepart
+	}
+	
+	// Return falsepart
+	return falsepart;
+}
+
+// Inserts a character into the display buffer
+function insertCharacter(int value) {
+	putc_oled(displayBuffer, value);
+	displayBuffer++;
+}
+
+// Inserts a number into the display buffer
+function insertNumber(int value) {
+	
+	if(value < 0) { // Check if value is negative
+		insertCharacter(ASCII_MINUS); // Insert '-' into the display buffer
+		value = abs(value); // Convert value to positive
+	}
+	
+	displayBufferInsertCopyValue = value; // Create a copy of value to perform work on
+	displayBufferInsertNumberOfDigits = 0; // Reset number of digits to 0
+	
+    // Determine the number of digits in the number by
+    // dividing it by 10 repeatedly until it becomes 0
+    // while not ignoring a value of 0
+    do {
+        displayBufferInsertCopyValue /= 10;
+        displayBufferInsertNumberOfDigits++;
+    } while(displayBufferInsertCopyValue)
+    
+    // Extract each digit of the number and store it in an array
+    for(i = 0; i < displayBufferInsertNumberOfDigits; i++) {
+        displayBufferInsertDigits[i] = (value % 10) + 48;
+        value /= 10;
+    }
+    
+    // Insert the digits in the order that they appear in the number
+    for(i = displayBufferInsertNumberOfDigits - 1; i >= 0; i--) {
+        insertCharacter(displayBufferInsertDigits[i]);
+    }
+}
+
+// Inserts a string into the display buffer
+function insertString(s) {
+	// Loop through each character of the string
+    do {
+    	insertCharacter(duint8(s)); // Insert character into display buffer
+    	s++; // Move to next character
+    } while(duint8(s)) // Loop until no more characters
+}
+
+// Edit menu action not allowed
+function menuActionFailed() {
+	// Make sure it is not running, if so, terminate it
+	if(combo_running(cboActionFailed)) { 
+		combo_stop(cboActionFailed);
+	}
+	
+	displayUpdate = FALSE;
+	combo_run(cboActionFailed); // Execute alert
+}
+
+// Menu action allowed
+function menuActionSuccess() {
+	// Make sure it is not running, if so, terminate it
+	if(combo_running(cboActionSuccess)) { 
+		combo_stop(cboActionSuccess);
+	}
+	
+	combo_run(cboActionSuccess); // Execute alert
+}
+
+// Output value to stick and gradually reduce it as it approaches maximum movement
+function output(stick, value) {
+	if(value) {
+		set_val(stick, clamp(value * (32767 - abs(get_val(stick))) / 32767 + get_val(stick), -32768, 32767));
+	} else {
+		set_val(stick, clamp(value * (-32768 + abs(get_val(stick))) / -32768 + get_val(stick), -32768, 32767));
+	}
+}
+
+// Prints a number to the screen
+function printNumber(x, y, number, size, color) {
+	insertNumber(number);
+	flushBuffer(x, y, size, color);
+}
+
+// Prints text to the screen
+function printText(x, y, text, size, color) {
+	insertString(text);
+	flushBuffer(x, y, size, color);
+}
+
+// Removes any "movement" inside calibrated drift area and applies a deadzone
+function removeDriftAndApplyDeadzone() {
+	// If anti-drift is not enabled, we use 0 for low/high values.  Deadzone doesn't matter
+	if(varAntidrift) {
+		correctStickInput(varAntidriftLeft[antiDriftLeft], varAntidriftLeft[antiDriftRight], varDeadzone[deadzoneLeft], moveX);
+		correctStickInput(varAntidriftLeft[antiDriftUp], varAntidriftLeft[antiDriftDown], varDeadzone[deadzoneLeft], moveY);
+		correctStickInput(varAntidriftRight[antiDriftLeft], varAntidriftRight[antiDriftRight], varDeadzone[deadzoneRight], aimX);
+		correctStickInput(varAntidriftRight[antiDriftUp], varAntidriftRight[antiDriftDown], varDeadzone[deadzoneRight], aimY);
+	} else {
+		// This is done because it's possible user has values saved
+		// but for whatever reason wants anti-drift off
+		// Deadzone doesn't matter, if user doesn't want to use script deadzone
+		// they can leave it at 0
+		correctStickInput(0, 0, varDeadzone[deadzoneLeft], moveX);
+		correctStickInput(0, 0, varDeadzone[deadzoneLeft], moveY);
+		correctStickInput(0, 0, varDeadzone[deadzoneRight], aimX);
+		correctStickInput(0, 0, varDeadzone[deadzoneRight], aimY);
+	}
+}
+
+// Sets button variables based on in-game settings
+function setButtonLayout() {
+	button[aim] = buttonLayoutMap[varControllerButtonLayout][aim];
+	button[ads] = buttonLayoutMap[varControllerButtonLayout][ads];
+	button[melee] = buttonLayoutMap[varControllerButtonLayout][melee];
+	button[fire] = buttonLayoutMap[varControllerButtonLayout][fire];
+	button[weapon] = buttonLayoutMap[varControllerButtonLayout][weapon];
+	button[interact] = buttonLayoutMap[varControllerButtonLayout][interact];
+	button[action] = buttonLayoutMap[varControllerButtonLayout][action];
+	button[jump] = buttonLayoutMap[varControllerButtonLayout][jump];
+	button[leanL] = buttonLayoutMap[varControllerButtonLayout][leanL];
+	button[leanR] = buttonLayoutMap[varControllerButtonLayout][leanR];
+	button[focus] = buttonLayoutMap[varControllerButtonLayout][focus];
+	button[zoom] = buttonLayoutMap[varControllerButtonLayout][zoom];
+}
+
+// Attempts to bind button_to_set to a toggle combination
+function setToggleButton(button_to_use, button_to_set, button_to_compare) {
+	
+	// Holding 'View' button will undo a previously set toggle combination button
+	if(button_to_set == XB1_VIEW) {
+		// Check if a buttin is set
+		if(button_to_use) {
+			button_to_use = 0; // Reset value
+			displayUpdate = TRUE; // Enable display update
+		}
+	} else if(button_to_set != button_to_use) { // Check if value to set is different than current stored value for toggle
+		if(button_to_set == button_to_compare) { // Make sure toggle combination [hold] button #1 does not equal [press] button #2
+			combo_run(cboActionFailed); // Cannot map same buttons
+		} else {
+			button_to_use = button_to_set; // Set toggle button
+		}
+	}
+	
+	return button_to_use;
+}
+
+// Set controller configuration
+function setControllerConfig() {
+	setButtonLayout();
+	setStickLayout();
+}
+
+// Sets the LED to the color provided as the parameter
+function setLedColor(color) {
+	set_hsb(colorValues[color][hue], colorValues[color][saturation], colorValues[color][brightness]);
+}
+
+// Sets the LED to a color based on the profile being used
+function setProfileLedColor(profile) {
+	if(!checkCombos()) { // Do not overlap with running combos that use the LEDs
+		set_hsb(colorValues[varProfileColor[profile]][hue], colorValues[varProfileColor[profile]][saturation], colorValues[varProfileColor[profile]][brightness]);
+	}
+}
+
+// Sets joystick-related variables
+function setStickLayout() {
+	// Set movement and aiming sticks
+	aimX = POLAR_RX;
+	aimY = POLAR_RY;
+	moveX = POLAR_LX;
+	moveY = POLAR_LY;
+}
+
+// Fix PS4 controller issue (from TD21)
+function swapPS4() {
+	if(get_console() == PIO_PS4) {
+	    if(get_controller() != PIO_PS4) {
+	        if(get_ival(PS4_SHARE)) {
+	            if(get_ival(PS4_R3)) {
+	                set_val(PS4_SHARE, 100);
+	                set_val(PS4_TOUCH, 0);
+	                set_val(PS4_R3, 0);
+	            } else {
+	                set_val(PS4_TOUCH, 100);
+	                set_val(PS4_SHARE, 0);
+	            }
+	        }
+	    }
+	} else if(get_console() == PIO_XB360) {
+	    if(get_controller() == PIO_PS4) {
+	        swap(PS4_TOUCH, PS4_SHARE);
+	    }
+	}
+}
+
+// Switches profiles
+function switchProfile(profile) {
+	currentProfile = profile; // Set current profile
+	combo_stop_all(); // Stop any combos that may disrupt the notification
+	reset_rumble(); // Stop and reset any rumbles
+	
+	if(!displayDepth) {
+		// Display notification only if not in a menu
+		combo_run(cboSwitchProfile);
+	} else if(displayDepth == 3) {
+		menuProfile = currentProfile;
+	}
+	
+	/*// Check if last profile switch is still executing
+	if(combo_running(cboSwitchProfile)) { // Check if last profile switch is still executing
+		combo_stop(cboSwitchProfile); // Cancel it
+	}
+	
+	// Check if an active toggle alert (i.e. Rapid Fire) is enabled
+	if(combo_running(cboToggleAlert)) {
+		combo_stop(cboToggleAlert);
+	}
+	
+	// If screen saver is enabled, disable it
+	if(screenSaverEnabled) {
+		screenSaverEnabled = !screenSaverEnabled; // Disable screen saver
+		screenSaverCounter = 0; // Reset counter
+	}
+	
+	currentProfile = profile; // Set new profile
+	combo_run(cboSwitchProfile); // Display notification*/
+}
+
+// Verifies that a toggle combination is not already set
+function verifyToggleCombo(verify_button, index) {
+	
+	// Loop through each set of toggle buttons
+	for(j = 0; j < sizeof(varToggleButton) / sizeof(varToggleButton[0]); j += 2) {
+		if(varToggleButton[j] && varToggleButton[j + 1]) { // Make sure the buttons are accepted (0 = rejected from prior function)
+			if(j != index) { // Do not compare against self, is already done in prior function
+				if(varToggleButton[j] == varToggleButton[index] && varToggleButton[j + 1] == varToggleButton[index + 1]) {
+					combo_run(cboActionFailed);
+					return 0;
+				}
+			}
+		}
+	}
+	
+	displayUpdate = TRUE; // Enable display update
+	combo_run(cboActionSuccess); // Notify user of success setting toggle button
+	
+	return verify_button; // Return button
+}
+
+
+/**************************************************************/
+// User-defined settings
+/**************************************************************/
+// Load user-defined configuration settings
+function loadSettings() {
+
+	reset_spvar();
+	
+	// Read and check the first bit, if it is set, we know something should have been saved, otherwise we fall back on our default setting
+	if(read_spvar(0, 1, 0)) {
+		varAntidrift							= read_spvar(0, 1, 0);
+		varAntidriftLeft[antiDriftUp]			= read_spvar(-4095, 4095, 0);
+		varAntidriftLeft[antiDriftDown]			= read_spvar(-4095, 4095, 0);
+		varAntidriftLeft[antiDriftLeft]			= read_spvar(-4095, 4095, 0);
+		varAntidriftLeft[antiDriftRight]		= read_spvar(-4095, 4095, 0);
+		varAntidriftRight[antiDriftUp]			= read_spvar(-4095, 4095, 0);
+		varAntidriftRight[antiDriftDown]		= read_spvar(-4095, 4095, 0);
+		varAntidriftRight[antiDriftLeft]		= read_spvar(-4095, 4095, 0);
+		varAntidriftRight[antiDriftRight]		= read_spvar(-4095, 4095, 0);
+		varControllerButtonLayout				= read_spvar(cblTypeA, cblTypeC, cblTypeB);
+		varControllerBumperTriggers				= read_spvar(0, 1, 0);
+		varToggleButton[toggleProfile]			= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleProfile + 1]		= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleBurstFire]		= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleBurstFire + 1]	= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleAutoParachute]	= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleAutoParachute + 1]= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleAutoTurbo]		= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varToggleButton[toggleAutoTurbo + 1]	= read_spvar(0, XB1_X, 0); // RB is lowest value and X is highest value
+		varProfileColor[0]						= read_spvar(red, pink, blue);
+		varProfileColor[1]						= read_spvar(red, pink, purple);
+		for(i = 0; i < 6; i++) {
+			varAntiRecoilSensitivity[i]			= read_spvar(0, 200, 0);
+		}
+		varAutoFocus							= read_spvar(0, 1, 0);
+		varAutoLean								= read_spvar(0, 1, 0);
+		varFastLean								= read_spvar(0, 1, 0);
+		varHairTriggers							= read_spvar(0, 1, 0);
+		varStanceTracker						= read_spvar(0, 1, 0);
+		varStanceAlert							= read_spvar(0, 1, 0);
+		varBlockRumble							= read_spvar(0, 1, 0);
+		varDeadzone[deadzoneLeft]				= read_spvar(0, 30, 0);
+		varDeadzone[deadzoneRight]				= read_spvar(0, 30, 0);
+		varInverted								= read_spvar(0, 1, 0);
+		varWeaponDisplay						= read_spvar(0, 1, 0);
+		varVMSpeed								= read_spvar(vmSpeed4, vmSpeed10, vmSpeed10);
+	} else {
+		if(!DEVELOPER) {
+			// Anti-drift
+			varAntidrift							= 0;
+			varAntidriftLeft[antiDriftUp]			= 0;
+			varAntidriftLeft[antiDriftDown]			= 0;
+			varAntidriftLeft[antiDriftLeft]			= 0;
+			varAntidriftLeft[antiDriftRight]		= 0;
+			varAntidriftRight[antiDriftUp]			= 0;
+			varAntidriftRight[antiDriftDown]		= 0;
+			varAntidriftRight[antiDriftLeft]		= 0;
+			varAntidriftRight[antiDriftRight]		= 0;
+			// Controller
+			varControllerButtonLayout				= cblTypeB;
+			varControllerBumperTriggers				= 0;
+			// Toggles
+			varToggleButton[toggleProfile]			= XB1_LT;
+			varToggleButton[toggleProfile + 1]		= XB1_Y;
+			varToggleButton[toggleBurstFire]		= 0;
+			varToggleButton[toggleBurstFire + 1]	= 0;
+			varToggleButton[toggleAutoParachute]	= 0;
+			varToggleButton[toggleAutoParachute + 1]= 0;
+			varToggleButton[toggleAutoTurbo]		= 0;
+			varToggleButton[toggleAutoTurbo + 1]	= 0;
+			// Options
+			varAutoFocus							= 0;
+			varAutoLean								= 0;
+			varFastLean								= 0;
+			varHairTriggers							= 0;
+			varStanceTracker						= 0;
+			varStanceAlert							= 0;
+			// Profiles
+			varProfileColor[0]						= green;
+			varProfileColor[1]						= purple;
+			// Settings
+			for(i = 0; i < 6; i++) {
+				varAntiRecoilSensitivity[i]			= 0;
+			}
+			varBlockRumble							= 0;
+			varDeadzone[deadzoneLeft]				= 0;
+			varDeadzone[deadzoneRight]				= 0;
+			varInverted								= 0;
+			varWeaponDisplay						= 0;
+			varVMSpeed								= vmSpeed10;
+		} else {
+			// Anti-drift
+			varAntidrift							= 1;
+			varAntidriftLeft[antiDriftUp]			= -2666;
+			varAntidriftLeft[antiDriftDown]			= 763;
+			varAntidriftLeft[antiDriftLeft]			= 683;
+			varAntidriftLeft[antiDriftRight]		= 3160;
+			varAntidriftRight[antiDriftUp]			= -4078;
+			varAntidriftRight[antiDriftDown]		= -2735;
+			varAntidriftRight[antiDriftLeft]		= 2528;
+			varAntidriftRight[antiDriftRight]		= 4523;
+			// Anti-recoil
+			varAntiRecoilSensitivity[0]				= 90;
+			varAntiRecoilSensitivity[1]				= 90;
+			varAntiRecoilSensitivity[2]				= 95;
+			varAntiRecoilSensitivity[3]				= 90;
+			varAntiRecoilSensitivity[4]				= 65;
+			varAntiRecoilSensitivity[5]				= 65;
+			// Controller
+			varControllerButtonLayout				= cblTypeB;
+			varControllerBumperTriggers				= 0;
+			// Toggles
+			varToggleButton[toggleProfile]			= XB1_LT;
+			varToggleButton[toggleProfile + 1]		= XB1_Y;
+			varToggleButton[toggleBurstFire]		= XB1_LT;
+			varToggleButton[toggleBurstFire + 1]	= XB1_LEFT;
+			varToggleButton[toggleAutoParachute]	= XB1_LT;
+			varToggleButton[toggleAutoParachute + 1]= XB1_A;
+			varToggleButton[toggleAutoTurbo]		= XB1_RT;
+			varToggleButton[toggleAutoTurbo + 1]	= XB1_RIGHT;
+			// Options
+			varAutoFocus							= 1;
+			varAutoLean								= 1;
+			varFastLean								= 1;
+			varHairTriggers							= 1;
+			varStanceTracker						= 1;
+			varStanceAlert							= 1;
+			// Profiles
+			varProfileColor[0]						= green;
+			varProfileColor[1]						= purple;
+			// Settings
+			varBlockRumble							= 1;
+			varDeadzone[deadzoneLeft]				= 5;
+			varDeadzone[deadzoneRight]				= 5;
+			varInverted								= 1;
+			varWeaponDisplay						= 1;
+			varVMSpeed								= vmSpeed10;
+		}
+	}
+	
+	setControllerConfig(); // Set controller configuration
+}
+// Save user-defined configuration settings
+function saveSettings() {
+	// Always reset the spvar state before saving to ensure that we are saving at the same location as we will later read
+	reset_spvar();
+	
+	// Save a constant 1 to denote previously saved data, this range uses 1 bit
+	save_spvar(1, 0, 1);
+	save_spvar(varAntidrift, 0, 1);
+	save_spvar(varAntidriftLeft[antiDriftUp], -4095, 4095);
+	save_spvar(varAntidriftLeft[antiDriftDown], -4095, 4095);
+	save_spvar(varAntidriftLeft[antiDriftLeft], -4095, 4095);
+	save_spvar(varAntidriftLeft[antiDriftRight], -4095, 4095);
+	save_spvar(varAntidriftRight[antiDriftUp], -4095, 4095);
+	save_spvar(varAntidriftRight[antiDriftDown], -4095, 4095);
+	save_spvar(varAntidriftRight[antiDriftLeft], -4095, 4095);
+	save_spvar(varAntidriftRight[antiDriftRight], -4095, 4095);
+	save_spvar(varControllerButtonLayout, cblTypeA, cblTypeC);
+	save_spvar(varControllerBumperTriggers, 0, 1);
+	save_spvar(varToggleButton[toggleProfile], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleProfile + 1], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleBurstFire], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleBurstFire + 1], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleAutoParachute], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleAutoParachute + 1], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleAutoTurbo], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varToggleButton[toggleAutoTurbo + 1], 0, XB1_X); // RB is lowest value and X is highest value
+	save_spvar(varProfileColor[0], red, pink);
+	save_spvar(varProfileColor[1], red, pink);
+	for(i = 0; i < 6; i++) {
+		save_spvar(varAntiRecoilSensitivity[i], 0, 200);
+	}
+	save_spvar(varAutoFocus, 0, 1);
+	save_spvar(varAutoLean, 0, 1);
+	save_spvar(varFastLean, 0, 1);
+	save_spvar(varHairTriggers, 0, 1);
+	save_spvar(varStanceTracker, 0, 1);
+	save_spvar(varStanceAlert, 0, 1);
+	save_spvar(varBlockRumble, 0, 1);
+	save_spvar(varDeadzone[deadzoneLeft], 0, 30);
+	save_spvar(varDeadzone[deadzoneRight], 0, 30);
+	save_spvar(varInverted, 0, 1);
+	save_spvar(varWeaponDisplay, 0, 1);
+	save_spvar(varVMSpeed, vmSpeed4, vmSpeed10);
+
+	// Debug purposes to make sure we have enough space
+	set_val(TRACE_1, spvar_current_slot);
+	
+	setControllerConfig();
+}
+
+function reset_spvar() {
+	 // Change this to say where it's safe to Roset storing data
+	spvar_current_slot = SPVAR_1; 
+	
+	// Should always be 0, unless you're using part of the first SPVAR 
+	// in which case you should also change the next line to include the 
+	// value you are storing in the bits you are using
+	spvar_current_bit = 0; 
+	spvar_current_value = 0;
+}
+
+// Function used to count the number of bits used by the given value
+function get_bit_count(val) {
+	// We need to Roset at 0, we use spvar_tmp here as we need to track
+	// the bits during our loop below
+	spvar_tmp = 0; 
+	
+	// Loop while val is anything but 0
+	while (val) { 
+		// Increment the bit count by 1
+		spvar_tmp++; 
+		
+		// Shift the value down 1 bit, once we have no more bits set this
+		// will result in 0, unless the value is negative - in which case
+		// this will be endless, we do abs here to make it always
+		val = abs(val >> 1);
+	}
+	return spvar_tmp;
+}
+
+// Function used to count the number of bits used by 2 given values
+function get_bit_count2(val1, val2) {
+	// Get the highest bit count required for either min or max
+	spvar_tmp = max(get_bit_count(val1), get_bit_count(val2));
+	
+	// Check if we need to know if the value is negative or not
+	if (is_signed2(val1, val2)) {
+		// If we need to track if the saved value is negative, we need 1 bit
+		// for that specifically - the others are used to store the actual value
+		spvar_tmp++;
+	}
+	return spvar_tmp;
+}
+
+// Function used to determine if either of 2 given values is negative
+function is_signed2(val1, val2) {
+	return (val1 < 0) || (val2 < 0);
+}
+
+// Function used to generate a bitmask for the sign bit, this will always be
+// the highest bit in the range we're requesting it for, to do that - we need
+// to Roset with the lowest bit set and move it up the number of steps there
+// is between 1 and the bits we need, this needs to be a maximum of 31 but can
+// never be negative
+function make_sign(bits) { 
+	return 1 << clamp(bits - 1, 0, 31);
+}
+
+// Function used to generate a full bitmask (essentially all bits set up to
+// and including the number of bits given)
+function make_full_mask(bits) {	
+	// If we're wanting a bitmask for all bits, we can simply return -1
+	// (which is all bits set to 1)
+	if (bits == 32) { 
+		return -1;
+	}
+	
+	// What we do here is basically take a value with all bits except the highest
+	// set and shift them down as many times as we need to get a mask that fits
+	// the bit count we're looking for
+	return 0x7FFFFFFF >> (31 - bits);
+}
+
+// Function used to generate a bitmask for just the bits required for the value
+// part of a signed range, this means all the bits below the sign bit
+function make_sign_mask(bits) {
+	return make_full_mask(bits - 1);
+}
+
+// Function used to pack a value that has potential for being negative in a way
+// that we use the least number of bits we really need to represent the value
+function pack_i(val, bits) {
+
+	// Check if we have a negative value, if so - handle it accordingly
+	if (val < 0) { 
+		// Get the positive version of the value and keep the bits that are within
+		// range of what we're doing and add the sign bit since we have a negative
+		// value and return the result
+		return (abs(val) & make_sign_mask(bits)) | make_sign(bits);
+	}
+	
+	// Get the bits that are within our range
+	return val & make_sign_mask(bits); 
+}
+
+// Function used to unpack (restore) a value that has potential for being negative,
+// essentially reversing what pack_i does above
+function unpack_i(val, bits) {
+
+	// Check if the stored value is supposed to be negative
+	if (val & make_sign(bits)) {
+		// Retrieve the stored positive value and subtract it from 0 (resulting in
+		// the same value except negative), return the result
+		return 0 - (val & make_sign_mask(bits));
+	}
+	
+	// Retrieve the stored positive value and return it
+	return val & make_sign_mask(bits);
+}
+
+// Function used to read the value of a SPVAR without any limits
+function read_spvar_slot(slot) {
+	return get_pvar(slot, 0x80000000, 0x7FFFFFFF, 0);
+}
+
+// Function used to save your value in the SPVARs, this is the function you'll be
+// calling when saving a value. You need to provide the value to save aswell as
+// the range (minimum and maximum value, this is how we determine how many bits
+// to use when saving this value)
+function save_spvar(val, min, max) {
+
+	// Set spvar_bits to the number of bits we need for this range
+	spvar_bits = get_bit_count2(min, max); 
+	
+	// Make sure the value is within our defined range to begin with
+	val = clamp(val, min, max); 
+	
+	// If either min or max is negative, we need to pack this value as a
+	// possibly negative value
+	if (is_signed2(min, max)) { 
+		// Pack as signed value (possibly negative)
+		val = pack_i(val, spvar_bits);
+	}
+	
+	// Pack as unsigned value (always positive), this essentially just makes the
+	// resulting value not have any extra bits set - it's safe to use after the
+	// signed packing since we're not using any bits outside of the unsigned range anyways
+	val = val & make_full_mask(spvar_bits); 
+	
+	// Check if there is not enough bits remaining to save this value as-is. if
+	// there aren't enough bits, we save what we can here and store the remaining
+	// bits in the next spvar, if this means we're hitting the end, we can make
+	// this smaller by handling the case where we use all bits here aswell
+	if (spvar_bits >= 32 - spvar_current_bit) { 
+		// Add what we can to the current value where there is bits available to use
+		spvar_current_value = spvar_current_value | (val << spvar_current_bit); 
+		// Save the current SPVAR before advancing to the next one
+		set_pvar(spvar_current_slot, spvar_current_value); 
+		// Move to the next slot
+		spvar_current_slot++; 
+		// Update the required bits according to our needs for the next slot, 
+		// if we don't do this here, we'll screw up the saved value by moving
+		// it too far out of range
+		spvar_bits -= (32 - spvar_current_bit);
+		// Move the remaining bits down, discarding the bits we've already saved
+		val = val >> (32 - spvar_current_bit); 
+		// Reset the current bit counter since we're Roseting with a new SPVAR
+		spvar_current_bit = 0; 
+		// Reset our value so we Roset clean, we aren't currently using any bits anyways
+		spvar_current_value = 0; 
+	}
+	
+	// Merge the current SPVAR value with our currently value where there is space to keep our value
+	spvar_current_value = spvar_current_value | (val << spvar_current_bit); 
+	// Move up the counter of next available bit to where we are currently saving data at
+	spvar_current_bit += spvar_bits; 
+	
+	if (!spvar_current_bit) {
+		// Reset our value so we Roset clean, we aren't currently using any bits anyways
+		spvar_current_value = 0; 
+	}
+	
+	// Save the SPVAR with the current value, this won't write anything to flash unless
+	//the value changed - so we can do this for each variable saved to no risk missing anything
+	set_pvar(spvar_current_slot, spvar_current_value); 
+}
+
+// Function used to read your value from the SPVARs, this is the function you'll be
+// calling when reading a value. You need to provide the range (minimum and maximum
+// value, this is how we determine how many bits to use when reading the value) aswell
+// as a default value if what we read is out of range
+function read_spvar(min, max, def) {
+
+	// Set spvar_bits to the number of bits we need for this range
+	spvar_bits = get_bit_count2(min, max); 
+	
+	// Read the current SPVAR value from flash and shift them into position,
+	// we'll handle split values next
+	spvar_current_value = (read_spvar_slot(spvar_current_slot) >> spvar_current_bit) & make_full_mask(spvar_bits);
+	
+	// Check if we are dealing with a split SPVAR value, essentially if the current
+	// position means we're using more than 32 bits in the SPVAR, we need to retrieve
+	// the missing bits from the next SPVAR and put them back to our current value,
+	// we use the same space saving trick here as in the save function
+	if (spvar_bits >= 32 - spvar_current_bit) {
+		spvar_current_value = (spvar_current_value & make_full_mask(32 - spvar_current_bit)) | ((read_spvar_slot(spvar_current_slot + 1) & make_full_mask(spvar_bits - (32 - spvar_current_bit))) << (32 - spvar_current_bit));
+		//Below is a breakdown of the line above, with each step done one at a time instead of all at once - this however increases codesize - the below code is to explain how it all works tho
+		//spvar_tmp = read_spvar_slot(spvar_current_slot + 1); // Read the SPVAR slot coming after the initial one we used to spvar_tmp from flash, we need to maintain the data we've read thus far, but also add on what we have in flash for the next SPVAR
+		//spvar_tmp = spvar_tmp & make_full_mask(spvar_bits - (32 - spvar_current_bit)); // Extract the bits we need need (the ones that didn't fit in the previous SPVAR)
+		//spvar_tmp = spvar_tmp << (32 - spvar_current_bit); // Move the bits into their original position, they were stored at the beginning of the new SPVAR but belong at the top of the currently read value
+		//spvar_current_value = (spvar_current_value & make_full_mask(32 - spvar_current_bit)) | spvar_tmp; // put all bits together again with the part read from the first SPVAR cleaned up to only include the bits from this variable/value and not all bits set in the upper range like they normally are
+	}
+	
+	// Move up the counter of next available bit to where we are will be reading data from next
+	spvar_current_bit += spvar_bits;
+	// Extract all bits included for this value and discard any other bits
+	spvar_current_value = spvar_current_value & make_full_mask(spvar_bits); 
+	
+	if (spvar_current_bit >= 32) {
+		// Move to the next SPVAR slot
+		spvar_current_slot++;
+		// Remove 32 from the spvar_current_bit tracker since we've gone beyond what we can do here
+		spvar_current_bit -= 32;
+	}
+	
+	// Check if the value can be negative and handle it accordingly
+	if (is_signed2(min, max)) { 
+		// Restore the signed, possibly negative value
+		spvar_current_value = unpack_i(spvar_current_value, spvar_bits); 
+	}
+	
+	// Check if the value is below our specified min or above our specified max,
+	// if so - return the default value instead
+	if (spvar_current_value < min || spvar_current_value > max) { 
+		// This can be changed to min instead as a reasonable default with the
+		// default parameter being removed if you don't need to have a override
+		// value for the default when out of range, that will save a bit of code size
+		return def; 
+	}
+	
+	// Return the retrieved value to the user since it's within the expected range
+	return spvar_current_value;
+}
+
+
+/**************************************************************/
+// Combos
+/**************************************************************/
+combo cboActionSuccess {
+	set_hsb(colorValues[green][hue], colorValues[green][saturation], colorValues[green][brightness]);
+	set_rumble(RUMBLE_B, 80);
+	wait(240);
+	reset_rumble();
+}
+
+combo cboActionFailed {
+	set_hsb(colorValues[red][hue], colorValues[red][saturation], colorValues[red][brightness]);
+	set_rumble(RUMBLE_A, 80);
+	wait(240);
+	reset_rumble();
+}
+
+combo cboAlertToggleEngaged {
+	setProfileLedColor(currentProfile);
+	wait(240);
+	if(stancePosition) {
+		setLedColor(iif(stancePosition == 1, teal, orange));
+	}
+	wait(iif(stancePosition, 240, 0));
+	setLedColor(white);
+	wait(240);
+}
+
+combo cboAlertScriptPaused {
+	setLedColor(gold);
+	wait(120);
+	set_hsb(0, 0, 0);
+	wait(120);
+}
+
+combo cboAlertStance {
+	setLedColor(iif(stancePosition == 1, teal, orange));
+	wait(240);
+	setProfileLedColor(currentProfile);
+	wait(240);
+}
+
+combo cboAutoFocus {
+	set_val(XB1_LX, 0);
+	set_val(XB1_LY, 0);
+	wait(250);
+	set_val(button[focus], 100);
+	wait(8000);
+	set_val(button[focus], 0);
+	wait(10000);
+	set_val(button[focus], 100);
+	wait(3000);
+	set_val(button[focus], 0);
+	wait(6000);
+	set_val(button[focus], 100);
+	wait(3200);
+	set_val(button[focus], 0);
+	wait(6200);
+	set_val(button[focus], 100);
+	wait(3200);
+	set_val(button[focus], 0);
+	wait(6000);
+}
+
+combo cboBurstFire {
+	// Low value (LCM of possible VM speeds) for immediate fire
+	wait(60);
+	set_val(button[fire], 0);
+	wait(60);
+	set_val(button[fire], 100);
+	wait(60);
+	set_val(button[fire], 0);
+	wait(60);
+	set_val(button[fire], 100);
+	wait(60);
+}
+
+combo cboFastLean {
+	set_val(button[leanR], 100);
+	wait(250);
+	set_val(button[leanL], 100);
+	wait(250);
+}
+
+combo cboCalibrationComplete {
+	cls_oled(OLED_BLACK);
+	set_rumble(RUMBLE_B, 100);
+	setLedColor(iif(antiDriftCalibrationCanSet == 2, yellow, iif(antiDriftCalibrationCanSet, green, red)));
+	printText(alignCenter, alignCenter, antiDriftCalibrationResult[antiDriftCalibrationCanSet], OLED_FONT_SMALL, OLED_WHITE);
+	wait(1440);
+	reset_rumble();
+	antiDriftCalibrationState = !antiDriftCalibrationState; // Clear calibration state
+	displayUpdate = TRUE; // Enable display update
+	antiDriftCalibrationCanSet = FALSE; // Reset calibration variable
+	antiDriftCalibrationInRange = FALSE; // Reset calibration variable
+}
+
+combo cboChangeForegrip {
+	set_rumble(RUMBLE_A, antiRecoilForegrip[currentProfile] * 20);
+	wait(240);
+	reset_rumble();
+	combo_restart(cboWeaponDisplay);
+}
+
+combo cboChangeMuzzle {
+	set_rumble(RUMBLE_A, antiRecoilMuzzle[currentProfile] * 33);
+	wait(240);
+	reset_rumble();
+	combo_restart(cboWeaponDisplay);
+}
+
+combo cboChangeStock {
+	set_rumble(RUMBLE_A, antiRecoilStock[currentProfile] * 33);
+	wait(240);
+	reset_rumble();
+	combo_restart(cboWeaponDisplay);
+}
+
+combo cboChangeScope {
+	set_rumble(RUMBLE_A, (antiRecoilScope[currentProfile] + 1) * 33);
+	wait(240);
+	reset_rumble();
+	combo_restart(cboWeaponDisplay);
+}
+
+combo cboSaveSettings {
+	cls_oled(OLED_BLACK);
+	printText(alignCenter, alignCenter, settingsSaved[0], OLED_FONT_SMALL, OLED_WHITE);
+	set_hsb(colorValues[green][hue], colorValues[green][saturation], colorValues[green][brightness]);
+	set_rumble(RUMBLE_B, 100);
+	wait(500);
+	reset_rumble();
+	saveSettings();
+	// Enable display update
+	displayUpdate = TRUE; 
+}
+
+combo cboStanceAlert {
+	set_rumble(RUMBLE_B, 35);
+	wait(240);
+	reset_rumble();
+}
+
+combo cboStanceReset {
+	set_rumble(RUMBLE_A, 50);
+	wait(240);
+	reset_rumble();
+}
+
+combo cboSwitchProfile {
+	cls_oled(OLED_BLACK);
+	insertString(weaponName[currentWeapon[currentProfile]]);
+	flushBuffer(alignCenter, alignCenter, OLED_FONT_SMALL, OLED_WHITE);
+	wait(1000);
+	cls_oled(OLED_BLACK);
+	screenSaverWeaponCounter = 3500; // Reset display
+}
+
+combo cboToggleOff {
+	set_hsb(colorValues[yellow][hue], colorValues[yellow][saturation], colorValues[yellow][brightness]);
+	set_rumble(RUMBLE_A, 75);
+	wait(120);
+	set_hsb(colorValues[red][hue], colorValues[red][saturation], colorValues[red][brightness]);
+	wait(240);
+	set_hsb(colorValues[yellow][hue], colorValues[yellow][saturation], colorValues[yellow][brightness]);
+	set_rumble(RUMBLE_A, 75);
+	wait(120);
+	reset_rumble();
+}
+
+combo cboToggleOn {
+	set_hsb(colorValues[yellow][hue], colorValues[yellow][saturation], colorValues[yellow][brightness]);
+	set_rumble(RUMBLE_B, 75);
+	wait(120);
+	set_hsb(colorValues[green][hue], colorValues[green][saturation], colorValues[green][brightness]);
+	wait(240);
+	set_hsb(colorValues[yellow][hue], colorValues[yellow][saturation], colorValues[yellow][brightness]);
+	set_rumble(RUMBLE_A, 75);
+	wait(120);
+	reset_rumble();
+}
+
+combo cboToggleAutoParachute {
+	cls_oled(OLED_BLACK);
+	if(autoParachute) {
+		combo_run(cboToggleOn);
+	} else {
+		combo_run(cboToggleOff);
+	}
+	printText(alignCenter, alignCenter, toggleMessages[toggleAutoParachute - 2 + autoParachute], OLED_FONT_SMALL, OLED_WHITE);
+	wait(960);
+	if(!autoParachute) {
+		cls_oled(OLED_BLACK);
+	}
+}
+
+combo cboToggleAutoTurbo {
+	cls_oled(OLED_BLACK);
+	if(autoTurbo) {
+		combo_run(cboToggleOn);
+	} else {
+		combo_run(cboToggleOff);
+	}
+	printText(alignCenter, alignCenter, toggleMessages[toggleAutoTurbo - 2 + autoTurbo], OLED_FONT_SMALL, OLED_WHITE);
+	wait(960);
+	cls_oled(OLED_BLACK);
+}
+
+combo cboToggleBurstFire {
+	cls_oled(OLED_BLACK);
+	if(burstFire[currentProfile]) {
+		combo_run(cboToggleOn);
+	} else {
+		combo_run(cboToggleOff);
+	}
+	printText(alignCenter, alignCenter, toggleMessages[toggleBurstFire - 2 + burstFire[currentProfile]], OLED_FONT_SMALL, OLED_WHITE);
+	wait(960);
+	cls_oled(OLED_BLACK);
+}
+
+int weaponDisplayCounter;
+
+combo cboWeaponDisplay {
+	weaponDisplayCounter = 0; // Reset line counter
+	cls_oled(OLED_BLACK); // Clear screen
+	if((currentWeapon[currentProfile] < sniper_shotgun) && canUseMuzzle(currentWeapon[currentProfile]) || canUseForegrip(currentWeapon[currentProfile]) || canUseStock(currentWeapon[currentProfile])) {
+		insertString(weaponName[currentWeapon[currentProfile]]);
+		if(canUseScope(currentProfile)) {
+			insertCharacter(ASCII_SPACE);
+			insertCharacter(ASCII_LEFT_PARENTHESIS);
+			insertString(scopeName[antiRecoilScope[currentProfile]]);
+			insertCharacter(ASCII_RIGHT_PARENTHESIS);
+		}
+		flushBuffer(alignCenter, 7, OLED_FONT_SMALL, OLED_WHITE);
+		if(canUseMuzzle(currentWeapon[currentProfile])) {
+			printText(alignLeft, lineNumber[weaponDisplayCounter], muzzles[antiRecoilMuzzle[currentProfile]], OLED_FONT_SMALL, OLED_WHITE);
+			weaponDisplayCounter++;
+		}
+		if(canUseForegrip(currentWeapon[currentProfile])) {
+			printText(alignLeft, lineNumber[weaponDisplayCounter], foregrips[antiRecoilForegrip[currentProfile]], OLED_FONT_SMALL, OLED_WHITE);
+			weaponDisplayCounter++;
+		}
+		if(canUseStock(currentWeapon[currentProfile])) {
+			printText(alignLeft, lineNumber[weaponDisplayCounter], stocks[antiRecoilStock[currentProfile]], OLED_FONT_SMALL, OLED_WHITE);
+		}
+	} else {
+		insertString(weaponName[currentWeapon[currentProfile]]);
+		if(canUseScope(currentProfile)) {
+			insertCharacter(ASCII_SPACE);
+			insertCharacter(ASCII_LEFT_PARENTHESIS);
+			insertString(scopeName[antiRecoilScope[currentProfile]]);
+			insertCharacter(ASCII_RIGHT_PARENTHESIS);
+		}
+		flushBuffer(alignCenter, alignCenter, OLED_FONT_SMALL, OLED_WHITE);
+	}
+	//wait(3500);
+	//cls_oled(OLED_BLACK);
+}
+
+/**************************************************************/
+// Tables
+/**************************************************************/
+//
+// Polar stick values (0 - 100)
+const int16 polarValues[] = {
+    0,
+	328, 656, 984, 1312, 1640, 1968, 2296, 2624, 2952, 3280,
+    3608, 3936, 4264, 4592, 4920, 5248, 5576, 5904, 6232, 6560,
+    6888, 7216, 7544, 7872, 8200, 8528, 8856, 9184, 9512, 9840,
+    10168, 10496, 10824, 11152, 11480, 11808, 12136, 12464, 12792, 13120,
+    13448, 13776, 14104, 14432, 14760, 15088, 15416, 15744, 16072, 16400,
+    16728, 17056, 17384, 17712, 18040, 18368, 18696, 19024, 19352, 19680,
+    20008, 20336, 20664, 20992, 21320, 21648, 21976, 22304, 22632, 22960,
+    23288, 23616, 23944, 24272, 24600, 24928, 25256, 25584, 25912, 26240,
+    26568, 26896, 27224, 27552, 27880, 28208, 28536, 28864, 29192, 29520,
+    29848, 30176, 30504, 30832, 31160, 31488, 31816, 32144, 32472, 32767
+
+} ú»··€°€±‚»Œ¿Ì
